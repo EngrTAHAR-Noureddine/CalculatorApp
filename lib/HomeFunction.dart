@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class HomeFunction extends StatefulWidget {
   @override
@@ -7,6 +9,41 @@ class HomeFunction extends StatefulWidget {
 
 class _HomeFunctionState extends State<HomeFunction> {
 
+  Widget Botton(String fill,color){
+
+    return Expanded(
+      child: Container(
+        height: 25,
+        color: Colors.green,
+        child: Card(
+          color: color,
+          child: Text(fill),
+        ),
+      ),
+    );
+  }
+
+  List row10=[["a",Colors.orange],["b",Colors.orange],["c",Colors.orange],["d",Colors.orange]];
+  List row11=[["e",Colors.lightBlueAccent],["f",Colors.lightBlueAccent],["g",Colors.lightBlueAccent],["h",Colors.lightBlueAccent]];
+  List row20=[["a",Colors.white],["b",Colors.white],["c",Colors.white],["d",Colors.orange]];
+  List row21=[["e",Colors.lightBlueAccent],["f",Colors.lightBlueAccent],["g",Colors.lightBlueAccent],["h",Colors.lightBlueAccent]];
+  List row30=[["a",Colors.white],["b",Colors.white],["c",Colors.white],["d",Colors.orange]];
+  List row31=[["e",Colors.lightBlueAccent],["f",Colors.lightBlueAccent],["g",Colors.lightBlueAccent],["h",Colors.lightBlueAccent]];
+  List row40=[["a",Colors.white],["b",Colors.white],["c",Colors.white],["d",Colors.orange]];
+  List row41=[["e",Colors.lightBlueAccent],["f",Colors.lightBlueAccent],["g",Colors.lightBlueAccent],["h",Colors.lightBlueAccent]];
+  List row50=[["a",Colors.white],["b",Colors.white],["c",Colors.white],["d",Colors.orange]];
+  List row51=[["e",Colors.lightBlueAccent],["f",Colors.lightBlueAccent],["g",Colors.lightBlueAccent],["h",Colors.lightBlueAccent]];
+
+  List<Widget> _ContainOfRow(list){
+
+
+
+    return new List<Widget>.generate(list.length, (int index) {
+
+      return Botton(list[index][0], list[index][1]);
+    });
+
+  }
 
 
   List<Widget> _InnerFirstContain(double widthOfScreen){
@@ -79,14 +116,44 @@ class _HomeFunctionState extends State<HomeFunction> {
                       width: MediaQuery.of(context).size.width,
                       color: Colors.pinkAccent,
                       alignment: Alignment.center,
-                      /*child: Column(
+                      child: Column(
+                       /* mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,*/
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: _createChildren((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?someList+someList2:someList),
+                          Expanded(
+
+                            child: Row(
+                              /*mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,*/
+                              children: _ContainOfRow((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?row11+row10:row10),
+                            ),
+                          ),
+                          Expanded(
+                            child: Row(
+                             // mainAxisAlignment: MainAxisAlignment.center,
+                              children: _ContainOfRow((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?row21+row20:row20),
+                            ),
+                          ),
+                          Expanded(
+                            child: Row(
+                             // mainAxisAlignment: MainAxisAlignment.center,
+                              children: _ContainOfRow((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?row31+row30:row30),
+                            ),
+                          ),
+                         Expanded(
+                           child: Row(
+                           // mainAxisAlignment: MainAxisAlignment.center,
+                            children: _ContainOfRow((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?row41+row40:row40),
+                          ),
+                         ),
+                          Expanded(
+                            child: Row(
+                             // mainAxisAlignment: MainAxisAlignment.center,
+                              children: _ContainOfRow((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?row51+row50:row50),
+                            ),
                           ),
                         ],
-                      ),*/
+                      ),
                     ),
                   ),
                 ],
