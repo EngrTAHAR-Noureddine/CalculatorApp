@@ -9,22 +9,27 @@ class HomeFunction extends StatefulWidget {
 
 class _HomeFunctionState extends State<HomeFunction> {
 
-  Widget Botton(String fill,color){
+  Widget Button(String fill,color){
 
     return Expanded(
-      child: Container(
-        height: 25,
-        color: Colors.green,
-        child: Card(
-          color: color,
+      child: Card(
+        color: color,
+        margin: EdgeInsets.all(5),
+        child: FlatButton(
+          onPressed: (){},
           child: Text(fill),
         ),
       ),
     );
   }
 
-  List row10=[["a",Colors.orange],["b",Colors.orange],["c",Colors.orange],["d",Colors.orange]];
-  List row11=[["e",Colors.lightBlueAccent],["f",Colors.lightBlueAccent],["g",Colors.lightBlueAccent],["h",Colors.lightBlueAccent]];
+  List row10=[
+    ["C",Colors.orange],
+    ["<-",Colors.orange],
+    ["%",Colors.orange],
+    ["/",Colors.orange]
+              ];
+  List row11=[["e",Colors.white],["f",Colors.lightBlueAccent],["g",Colors.lightBlueAccent],["h",Colors.lightBlueAccent]];
   List row20=[["a",Colors.white],["b",Colors.white],["c",Colors.white],["d",Colors.orange]];
   List row21=[["e",Colors.lightBlueAccent],["f",Colors.lightBlueAccent],["g",Colors.lightBlueAccent],["h",Colors.lightBlueAccent]];
   List row30=[["a",Colors.white],["b",Colors.white],["c",Colors.white],["d",Colors.orange]];
@@ -123,32 +128,31 @@ class _HomeFunctionState extends State<HomeFunction> {
                           Expanded(
 
                             child: Row(
-                              /*mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,*/
+                              
                               children: _ContainOfRow((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?row11+row10:row10),
                             ),
                           ),
                           Expanded(
                             child: Row(
-                             // mainAxisAlignment: MainAxisAlignment.center,
+                             
                               children: _ContainOfRow((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?row21+row20:row20),
                             ),
                           ),
                           Expanded(
                             child: Row(
-                             // mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: _ContainOfRow((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?row31+row30:row30),
                             ),
                           ),
                          Expanded(
                            child: Row(
-                           // mainAxisAlignment: MainAxisAlignment.center,
+                            
                             children: _ContainOfRow((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?row41+row40:row40),
                           ),
                          ),
                           Expanded(
                             child: Row(
-                             // mainAxisAlignment: MainAxisAlignment.center,
+                             
                               children: _ContainOfRow((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?row51+row50:row50),
                             ),
                           ),
