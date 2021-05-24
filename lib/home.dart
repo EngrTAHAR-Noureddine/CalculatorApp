@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'HomeFunction.dart';
+import 'home_widgets.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
 
           ),
 
-          body: HomeFunction(),
+          body: HomeWidgets(),
 
 
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Home.dart';
+import 'home.dart';
 
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'FecomXpress',
+          title: 'nCalculator',
           home:Home(),
                     );
 
