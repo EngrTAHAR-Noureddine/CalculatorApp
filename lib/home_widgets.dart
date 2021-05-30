@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'my_flutter_app_icons.dart';
+
 class HomeWidgets extends StatefulWidget {
   @override
   _HomeWidgetsState createState() => _HomeWidgetsState();
@@ -13,9 +15,20 @@ class _HomeWidgetsState extends State<HomeWidgets> {
 
     return Expanded(
       child: Card(
-        color: _colorBox,
+      //  color:
+        color: Colors.transparent,
+        elevation: 0,
         margin: EdgeInsets.all(5),
-        child: FlatButton(
+        child: MaterialButton(
+          padding: EdgeInsets.all(0),
+          highlightColor: Color(0xFF363636),
+          elevation: 0,
+          highlightElevation: 0,
+          hoverElevation: 0,
+          shape: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5) ,
+                    borderSide: BorderSide(width:0 , color:(_colorBox==Color(0xFFF4F4F4))? Colors.black : Colors.transparent,)),
+          color: _colorBox,
           onPressed: (){},
           child: _child,
         ),
@@ -26,7 +39,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
   List rowButtonsNumbers1=[
 
                             [ Text("C" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210)],
-                            [ Text("<-", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210)],
+                            [ Icon(Icons.arrow_back , color: Color(0xFFFFFFFF),)  ,Color(0xFFFC8210)],
                             [ Text("%" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210)],
                             [ Text("/" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210)],
 
@@ -34,10 +47,10 @@ class _HomeWidgetsState extends State<HomeWidgets> {
 
   List rowButtonsFunctions1=[
 
-                            [ Text("x-1", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
+                            [Text("X\u207B\u00B9", style: TextStyle(color: Color(0xFFFFFFFF) ,))  ,Color(0xFF363636)],
                             [ Text("!", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
                             [ Text("ln",  style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
-                            [ Text("exp", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF4363636)]
+                            [ Text("e\u02e3", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF4363636)]
 
                               ];
   List rowButtonsNumbers2=[
@@ -51,10 +64,10 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                             ];
   List rowButtonsFunctions2=[
 
-                              [Text("Log" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
-                              [Text("cos",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
-                              [Text("sin" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
-                              [Text("tan" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
+                              [Text("(" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
+                              [Text(")",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
+                              [Text("x²" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
+                              [Text("x\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
 
 
                             ];
@@ -68,10 +81,10 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                           ];
   List rowButtonsFunctions3=[
 
-                              [Text("x²" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
-                              [Text("x^y" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
-                              [Text("qua",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
-                              [Text("pi" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)]
+                              [Text("10\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
+                              [Text("Log\u2081\u2080" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
+                              [Icon(MyFlutterApp.square_root_alt,size: 16 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636)],
+                              [Icon(MyFlutterApp.pi ,size: 18 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636)]
 
                             ];
   List rowButtonsNumbers4=[
@@ -85,10 +98,10 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                           ];
   List rowButtonsFunctions4=[
 
-                              [Text("10^y" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
-                              [Text("cosh",style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
-                              [Text("sinh" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
-                              [Text("tanh" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)]
+                              [Text("sin" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
+                              [Text("cos",style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
+                              [Text("tan" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
+                              [Text("|x|" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)]
 
                             ];
   List rowButtonsNumbers5=[
@@ -101,9 +114,9 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                           ];
   List rowButtonsFunctions5=[
 
-                              [Text("(" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
-                              [Text(")",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
-                              [Text("|x|" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
+                              [Text("cosh" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
+                              [Text("sinh",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636)],
+                              [Text("tanh" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
                               [Text("e",style: TextStyle(color:Color(0xFFFFFFFF)))  ,Color(0xFF363636)],
 
 
@@ -122,56 +135,176 @@ class _HomeWidgetsState extends State<HomeWidgets> {
 List rowButtons=[4];
 bool states = false;
 
-  Widget _switcherWidget(){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
+Widget _bigPad(){
 
+  return Container(
+    padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+    width: MediaQuery.of(context).size.width,
+
+    alignment: Alignment.center,
+    child: Column(
+      /* mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,*/
       children: [
-        MaterialButton(
-            child: Text('Functions'), //states is true then functions is active
-            padding: EdgeInsets.all(15.0),
-            elevation: 0,
-            highlightElevation: 0,
-          disabledColor: Color(0xFF707070),
-          disabledTextColor: Color(0xFFFFFFFF),
-            color:(states)?Color(0xFF707070): Color(0xFFFFFFFF),
-            textColor:(states)? Color(0xFFFFFFFF):Color(0xFF707070),
-         //  splashColor: Colors.green,
-            colorBrightness:(states)?Brightness.dark: Brightness.light,
+        Expanded(
 
-            shape: StadiumBorder(),
-            onPressed:(!states)? () {
-                      setState(() {
-                        states = !states;
-                      });
-            }:null,
+          child: Row(
 
+            children: _rowButtons(rowButtonsFunctions1+rowButtonsNumbers1),
+          ),
         ),
-        MaterialButton(
-            child: Text('Numbers'), // states is false so numbers is active
-            padding: EdgeInsets.all(15.0),
-            elevation: 0,
-            highlightElevation: 0,
-            disabledColor: Color(0xFF707070),
-            disabledTextColor: Color(0xFFFFFFFF),
-            color:(!states)?Color(0xFF707070): Color(0xFFFFFFFF),
-            textColor:(!states)? Color(0xFFFFFFFF):Color(0xFF707070),
-            //  splashColor: Colors.green,
-            colorBrightness:(!states)?Brightness.dark: Brightness.light,
-            shape: StadiumBorder(),
-            onPressed:(states)? () {
-              setState(() {
-                states = !states;
-              });
-            }:null,
+        Expanded(
+          child: Row(
+
+            children: _rowButtons(rowButtonsFunctions2+rowButtonsNumbers2),
+          ),
+        ),
+        Expanded(
+          child: Row(
+
+            children: _rowButtons(rowButtonsFunctions3+rowButtonsNumbers3),
+          ),
+        ),
+        Expanded(
+          child: Row(
+
+            children: _rowButtons(rowButtonsFunctions4+rowButtonsNumbers4),
+          ),
+        ),
+        Expanded(
+          child: Row(
+
+            children: _rowButtons(rowButtonsFunctions5+rowButtonsNumbers5),
+          ),
         ),
       ],
+    ),
+  );
+}
+
+  Widget _smallPad(){
+    return DefaultTabController(
+      length: 2,
+      initialIndex: 1,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title:TabBar(
+            indicatorColor: Color(0xFF707070),
+            unselectedLabelColor: Colors.black,
+            labelColor: Color(0xFF707070),
+
+            tabs: <Widget>[
+              Tab(
+                text: 'Functions',
+              ),
+              Tab(text: 'Numbers',),
+
+            ],
+          ),
+        ),
+        body:TabBarView(
+          children: <Widget>[
+
+            Container(
+              padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+              width: MediaQuery.of(context).size.width,
+
+              alignment: Alignment.center,
+              child: Column(
+                /* mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,*/
+                children: [
+                  Expanded(
+
+                    child: Row(
+
+                      children: _rowButtons(rowButtonsFunctions1),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+
+                      children: _rowButtons(rowButtonsFunctions2),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: _rowButtons(rowButtonsFunctions3),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+
+                      children: _rowButtons(rowButtonsFunctions4),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+
+                      children: _rowButtons(rowButtonsFunctions5),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+              width: MediaQuery.of(context).size.width,
+
+              alignment: Alignment.center,
+              child: Column(
+
+                /* mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,*/
+                children: [
+                  Expanded(
+
+                    child: Row(
+
+                      children: _rowButtons(rowButtonsNumbers1),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+
+                      children: _rowButtons(rowButtonsNumbers2),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: _rowButtons(rowButtonsNumbers3),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+
+                      children: _rowButtons(rowButtonsNumbers4),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+
+                      children: _rowButtons(rowButtonsNumbers5),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
+
   }
 
 
-
+  Widget _operationWidget(){
+    return ;
+  }
 
 
   @override
@@ -186,8 +319,8 @@ bool states = false;
            * he second Section is named "_secondSectionBody" and split to 4 segments :
            * the first segment to show the result, named "_resultWidget".
            * and second segment to history and copy the result , named "_historyWidget".
-           * third segment : to switch between numbers and functions ,named "_switcherWidget".
-           * fourth segment : is the pad 4*5 named "_padWidget".
+           * third segment : contains Big_Pad and Small_Pad.
+
           */
           
           Expanded(
@@ -196,7 +329,7 @@ bool states = false;
             child: Container(
               width: MediaQuery.of(context).size.width,
               color: Colors.red,
-
+              child: _operationWidget(),
             ),
           ),
 
@@ -205,7 +338,7 @@ bool states = false;
             flex: 3,
             child: Container(
               width: MediaQuery.of(context).size.width,
-              color: Color(0xFFDFE0DF),
+              color:Colors.white,// Color(0xFFDFE0DF),
               child: Column(
                 children: [
                   Expanded(
@@ -227,62 +360,15 @@ bool states = false;
                     ),
                   ),
                   Expanded(
-                    /* third  segment of Second Section : _switcherWidget */
-                    flex: (MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?0:1,
+                    /* third  segment of Second Section : contains Big_Pad and Small_Pad */
+                    flex: (MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?5:6,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
 
-                      child: _switcherWidget(),
+                      child:(MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?_bigPad() :_smallPad(),
                     ),
                   ),
-              
-                  Expanded(
-                    /* fourth segment of Second Section : _padWidget */
-                    flex: 5,
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                      width: MediaQuery.of(context).size.width,
-
-                      alignment: Alignment.center,
-                      child: Column(
-                       /* mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,*/
-                        children: [
-                          Expanded(
-
-                            child: Row(
-                              
-                              children: _rowButtons((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?rowButtonsFunctions1+rowButtonsNumbers1:(states)?rowButtonsFunctions1:rowButtonsNumbers1),
-                            ),
-                          ),
-                          Expanded(
-                            child: Row(
-                             
-                              children: _rowButtons((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?rowButtonsFunctions2+rowButtonsNumbers2:(states)?rowButtonsFunctions2:rowButtonsNumbers2),
-                            ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: _rowButtons((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?rowButtonsFunctions3+rowButtonsNumbers3:(states)?rowButtonsFunctions3:rowButtonsNumbers3),
-                            ),
-                          ),
-                         Expanded(
-                           child: Row(
-                            
-                            children: _rowButtons((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?rowButtonsFunctions4+rowButtonsNumbers4:(states)?rowButtonsFunctions4:rowButtonsNumbers4),
-                          ),
-                         ),
-                          Expanded(
-                            child: Row(
-                             
-                              children: _rowButtons((MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?rowButtonsFunctions5+rowButtonsNumbers5:(states)?rowButtonsFunctions5:rowButtonsNumbers5),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+            
                 ],
               ),
             ),
