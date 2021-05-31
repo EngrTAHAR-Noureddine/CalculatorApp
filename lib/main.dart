@@ -11,7 +11,16 @@ class MyApp extends StatelessWidget {
 
 
     return MaterialApp(
-          debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        /* light theme settings */
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        /* dark theme settings */
+      ),
+      themeMode: ThemeMode.system,
+      debugShowCheckedModeBanner: false,
           title: 'nCalculator',
           home:Home(),
                     );
