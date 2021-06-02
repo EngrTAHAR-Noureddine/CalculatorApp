@@ -11,6 +11,76 @@ class HomeWidgets extends StatefulWidget {
 
 class _HomeWidgetsState extends State<HomeWidgets> {
 
+   _onPressedButton(_outputChar){
+    TextSelection offsetSelection = f.selection;
+    List specialChar = ["ln(", "og(", "in(", "os(", "an(", "bs(", "sh(","nh("];
+    String temp;
+    switch(_outputChar){
+      case "init" : setState(() {
+                      f.text="";
+                    f.selection = TextSelection(baseOffset: 0 , extentOffset: 0);});
+                    break;
+      case "remove":
+                      setState(() {
+                        if (f.text.isNotEmpty) {
+                          if (f.text.length > 2) {
+                            temp = specialChar.firstWhere((element) =>
+                            element == f.text.substring(f.text.length - 3, f.text.length),
+                                orElse: () {
+                                  return null;
+                                }).toString();
+                          } else
+                            temp = "null";
+                          if (temp != "null") {
+                            if ([6, 7].contains(specialChar.indexOf(temp))) {
+                              f.text = f.text.substring(0, (f.text.length - 5));
+                              f.selection = TextSelection(
+                                  baseOffset: offsetSelection.baseOffset - 5,
+                                  extentOffset: offsetSelection.baseOffset - 5);
+                            } else {
+                              f.text = f.text.substring(0, (f.text.length - 4));
+                              f.selection = TextSelection(
+                                  baseOffset: offsetSelection.baseOffset - 4,
+                                  extentOffset: offsetSelection.baseOffset - 4);
+                            }
+                          } else {
+                            f.text = f.text.substring(0, (f.text.length - 1));
+                            f.selection = TextSelection(
+                                baseOffset: offsetSelection.baseOffset - 1,
+                                extentOffset: offsetSelection.baseOffset - 1);
+                          }
+                        } else {
+                          f.text = "";
+                          f.selection = TextSelection(baseOffset: 0, extentOffset: 0);
+                        }
+                      });
+                                  break;
+      default :
+        setState(() {
+          if (f.text.isNotEmpty) {
+            f.text =
+                f.text.substring(0, offsetSelection.baseOffset) + _outputChar +
+                    f.text.substring(offsetSelection.baseOffset, f.text.length);
+          } else {
+            f.text = _outputChar;
+          }
+
+          f.selection = TextSelection(
+              baseOffset: offsetSelection.baseOffset + 1,
+              extentOffset: offsetSelection.extentOffset + 1);
+        });
+        break;
+
+
+
+
+    }
+
+
+
+  }
+
+
   Widget _button(_child ,_colorBox, _tapping){
 
     return Expanded(
@@ -29,20 +99,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                     borderRadius: BorderRadius.circular(5) ,
                     borderSide: BorderSide(width:0 , color:(_colorBox==Color(0xFFF4F4F4))? Colors.black : Colors.transparent,)),
           color: _colorBox,
-          onPressed: (){
-            setState(() {
-              txtselct = f.selection;
-              if(f.text.isNotEmpty){
-
-                f.text = f.text.substring(0,txtselct.baseOffset)+_tapping+f.text.substring(txtselct.baseOffset,f.text.length);
-
-              }else{ f.text = _tapping; }
-
-              f.selection = TextSelection(baseOffset: txtselct.baseOffset+1 , extentOffset: txtselct.extentOffset+1);
-
-
-            });
-          },
+          onPressed: ()=> _onPressedButton(_tapping),
           child: _child,
         ),
       ),
@@ -60,10 +117,10 @@ class _HomeWidgetsState extends State<HomeWidgets> {
 
   List rowButtonsFunctions1=[
 
-                            [Text("X\u207B\u00B9", style: TextStyle(color: Color(0xFFFFFFFF) ,))  ,Color(0xFF363636) , "\u207B\u00B9"],
+                            [Text("X\u207B\u00B9", style: TextStyle(color: Color(0xFFFFFFFF) ,))  ,Color(0xFF363636) , "^(-1)"],
                             [ Text("!", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "!"],
-                            [ Text("ln",  style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "ln"],
-                            [ Text("e\u02e3", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF4363636) ,"e("]
+                            [ Text("ln",  style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "ln("],
+                            [ Text("e\u02e3", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF4363636) ,"e^"]
 
                               ];
   List rowButtonsNumbers2=[
@@ -79,8 +136,8 @@ class _HomeWidgetsState extends State<HomeWidgets> {
 
                               [Text("(" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "("],
                               [Text(")",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,")"],
-                              [Text("x²" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "²"],
-                              [Text("x\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"\u02b8"],
+                              [Text("x²" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "^(2)"],
+                              [Text("x\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"^("],
 
 
                             ];
@@ -89,15 +146,15 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                             [Text("4" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "4"],
                             [Text("5" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "5"],
                             [Text("6" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "6"],
-                            [Text("-" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) ,"-"],
+                            [Text("-",style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) ,"-"],
 
                           ];
   List rowButtonsFunctions3=[
 
-                              [Text("10\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "*10\u02b8"],
+                              [Text("10\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "*10^("],
                               [Text("Log\u2081\u2080" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"Log("],
-                              [Icon(MyFlutterApp.square_root_alt,size: 16 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) , "square("],
-                              [Icon(MyFlutterApp.pi ,size: 18 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) ,"pi"]
+                              [Icon(MyFlutterApp.square_root_alt,size: 16 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) , String.fromCharCode(0x221A)+"("],
+                              [Icon(MyFlutterApp.pi ,size: 18 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) ,String.fromCharCode(0x03C0)]
 
                             ];
   List rowButtonsNumbers4=[
@@ -114,12 +171,12 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                               [Text("sin" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "sin("],
                               [Text("cos",style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "cos("],
                               [Text("tan" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"tan("],
-                              [Text("|x|" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"|"]
+                              [Text("|x|" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"abs("]
 
                             ];
   List rowButtonsNumbers5=[
 
-                            [Text("+/-" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "(-"],
+                            [Text("+/-" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "*(-1)"],
                             [Text("0" ,style: TextStyle(color:  Color(0xFF707070))) ,Color(0xFFF4F4F4) , "0"],
                             [Text("." ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "."],
                             [Text("=",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFFFC8210) , "="],
