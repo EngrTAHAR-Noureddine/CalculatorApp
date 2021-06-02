@@ -11,7 +11,7 @@ class HomeWidgets extends StatefulWidget {
 
 class _HomeWidgetsState extends State<HomeWidgets> {
 
-   _onPressedButton(_outputChar){
+   _onPressedButton(String _outputChar){
     TextSelection offsetSelection = f.selection;
     List specialChar = ["ln(", "og(", "in(", "os(", "an(", "bs(", "sh(","nh("];
     String temp;
@@ -22,6 +22,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                     break;
       case "remove":
                       setState(() {
+                        isShowCursor = true;
                         if (f.text.isNotEmpty) {
                           if (f.text.length > 2) {
                             temp = specialChar.firstWhere((element) =>
@@ -55,20 +56,30 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                         }
                       });
                                   break;
+      case "=":
+                setState(() {
+                  isShowCursor = false;
+                });
+        break;
       default :
-        setState(() {
-          if (f.text.isNotEmpty) {
-            f.text =
-                f.text.substring(0, offsetSelection.baseOffset) + _outputChar +
-                    f.text.substring(offsetSelection.baseOffset, f.text.length);
-          } else {
-            f.text = _outputChar;
-          }
+        if(isShowCursor) {
+          setState(() {
+            if (f.text.isNotEmpty) {
+              f.text =
+                  f.text.substring(0, offsetSelection.baseOffset) +
+                      _outputChar +
+                      f.text.substring(
+                          offsetSelection.baseOffset, f.text.length);
+            } else {
+              f.text = _outputChar;
+            }
 
-          f.selection = TextSelection(
-              baseOffset: offsetSelection.baseOffset + 1,
-              extentOffset: offsetSelection.extentOffset + 1);
-        });
+            f.selection = TextSelection(
+                baseOffset: (offsetSelection.baseOffset + _outputChar.length),
+                extentOffset: (offsetSelection.extentOffset +
+                    _outputChar.length));
+          });
+        }
         break;
 
 
@@ -372,19 +383,26 @@ Widget _bigPad(){
   }
 
   TextEditingController f = TextEditingController();
-
+  bool isShowCursor = true;
   TextSelection txtselct = new TextSelection(baseOffset: 0, extentOffset: 0);
   Widget _operationWidget(){
     return GestureDetector(
       child:TextField(
-          showCursor: true,
+          showCursor: isShowCursor,
           readOnly: true,
         autofocus: true,
         controller: f,
 
         onTap: () {
+         setState(() {
+           isShowCursor = true;
+         });
           txtselct = f.selection;
-
+            if(["a","b","c", "g","h","i", "l","n","o" ,"s","t"].contains(f.text[f.selection.baseOffset - 1])){
+               f.selection = TextSelection(
+                   baseOffset: (f.text.indexOf("(", f.selection.baseOffset))+1,
+                   extentOffset: (f.text.indexOf("(", f.selection.baseOffset))+1);
+            }
            print(f.selection);
 
 
