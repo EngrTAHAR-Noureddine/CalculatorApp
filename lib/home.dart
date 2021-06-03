@@ -13,10 +13,7 @@ class _HomeState extends State<Home> {
     return Directionality( textDirection: TextDirection.ltr, /* rtl : dir kolech right to left ; ltr : left to right ; */
         child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(
-              backgroundColor: Colors.green,
 
-          ),
 
           body: HomeWidgets(),
 

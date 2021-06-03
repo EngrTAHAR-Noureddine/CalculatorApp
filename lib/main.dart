@@ -1,3 +1,4 @@
+import 'package:calculatorflutter/history.dart';
 import 'package:flutter/material.dart';
 
 import 'home.dart';
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
           title: 'nCalculator',
           home:Home(),
+      routes: {
+        '/history' : (context)=>HistoryWidget(),
+      },
                     );
 
   }

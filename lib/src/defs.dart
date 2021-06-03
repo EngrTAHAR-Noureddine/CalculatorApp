@@ -17,14 +17,15 @@ final Map<String, String> _twoParameterFunctionLatexRepresentation = {
 /// A mapping of string representations to functions.
 final Map<String, num Function(num)> _oneParameterFunctionMap = {
   'abs': (num x) => x.abs(),
-  'acosR': acos,
-  'acosD': (num x)=> acos((x / pi) *180.0 ),
-  'asinR': asin,
-  'asinD': (num x)=> asin((x / pi) *180.0 ),
-  'atan': atan,
+  'acosR':(num x)=> acos(x),
+  'acosD': (num x)=> num.parse((( acos(x) / pi) *180.0 ).toStringAsFixed(2)),
+  'asinR': (num x)=>asin(x),
+  'asinD': (num x)=> num.parse( (( asin(x) / pi ) *180.0 ).toStringAsFixed(2)),
+  'atanR': (num x)=>atan(x),
+  'atanD': (num x)=> num.parse((atan(x)*180/pi).toStringAsFixed(2)),
   'ceil': (num x) => x.ceil(),
   'cosD': (num x)=> cos((x / 180.0) * pi),
-  'cosR': cos,
+  'cosR': (num x)=>cos(x),
   'cosh': (num x) => (pow(e, x) + pow(e, -x)) / 2,
   'cot': (num x) => 1 / tan(x),
   'coth': (num x) => (pow(e, x) + pow(e, -x)) / (pow(e, x) - pow(e, -x)),
@@ -37,22 +38,32 @@ final Map<String, num Function(num)> _oneParameterFunctionMap = {
   'round': (num x) => x.round(),
   'sec': (num x) => 1 / cos(x),
   'sech': (num x) => 2 / (pow(e, x) + pow(e, -x)),
-  'sinR': sin,
+  'sinR': (num x)=>sin(x),
   'sinD': (num x)=> sin((x / 180.0) * pi),
   'sinh': (num x) => (pow(e, x) - pow(e, -x)) / 2,
   String.fromCharCode(0x221A) : sqrt,
-  'tan': tan,
+  'tanR': (num x)=>tan(x),
+  'tanD': (num x)=>tan(x*pi/ 180),
+
   'tanh': (num x) => (pow(e, x) - pow(e, -x)) / (pow(e, x) + pow(e, -x))
 };
 
 /// A mapping of string representations of functions to LaTeX.
 final Map<String, String> _oneParameterFunctionLatexRepresentation = {
   'abs': r'\left| C \right| ',
-  'acos': r'\arccos\left( C \right) ',
-  'asin': r'\arcsin\left( C \right) ',
-  'atan': r'\arctan\left( C \right) ',
+  'acosR': r'\arccos\left( C \right) ',
+  'acosD': r'\arccos\left( C \right) ',
+
+  'asinR': r'\arcsin\left( C \right) ',
+  'asinD': r'\arcsin\left( C \right) ',
+
+  'atanR': r'\arctan\left( C \right) ',
+  'atanD': r'\arctan\left( C \right) ',
+
   'ceil': r'\lceil C \rceil ',
-  'cos': r'\cos\left( C \right) ',
+  'cosR': r'\cos\left( C \right) ',
+  'cosD': r'\cos\left( C \right) ',
+
   'cosh': r'\cosh\left( C \right) ',
   'cot': r'\cot\left( C \right) ',
   'coth': r'\coth\left( C \right) ',
@@ -65,10 +76,12 @@ final Map<String, String> _oneParameterFunctionLatexRepresentation = {
   'round': r'\left[ C \right] ',
   'sec': r'\sec\left( C \right) ',
   'sech': r'\sech\left( C \right) ',
-  'sin': r'\sin\left( C \right) ',
+  'sinR': r'\sin\left( C \right) ',
+  'sinD': r'\sin\left( C \right) ',
   'sinh': r'\sinh\left( C \right) ',
   String.fromCharCode(0x221A) : r'\sqrt{ C } ',
-  'tan': r'\tan\left( C \right) ',
+  'tanR': r'\tan\left( C \right) ',
+  'tanD': r'\tan\left( C \right) ',
   'tanh': r'\tanh\left( C \right) '
 };
 

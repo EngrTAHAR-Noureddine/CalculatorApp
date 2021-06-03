@@ -42,7 +42,13 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                               f.selection = TextSelection(
                                   baseOffset: offsetSelection.baseOffset - 5,
                                   extentOffset: offsetSelection.baseOffset - 5);
-                            } else {
+                            } else if(specialChar.indexOf(temp) == 0){
+                              f.text = f.text.substring(0, (f.text.length - 3));
+                              f.selection = TextSelection(
+                                  baseOffset: offsetSelection.baseOffset - 3,
+                                  extentOffset: offsetSelection.baseOffset - 3);
+                            }
+                            else{
                               f.text = f.text.substring(0, (f.text.length - 4));
                               f.selection = TextSelection(
                                   baseOffset: offsetSelection.baseOffset - 4,
@@ -67,11 +73,37 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                 setState(() {
 
                   if(rndToDeg == "Deg"){
-                    tempText = tempText.replaceAll("cos(","acos(");
+                    tempText = tempText.replaceAll("cos(","cosD(");
+                    tempText = tempText.replaceAll("cosR(","cosD(");
+                    tempText = tempText.replaceAll("sin(","sinD(");
+                    tempText = tempText.replaceAll("sinR(","sinD(");
+                    tempText = tempText.replaceAll("tan(","tanD(");
+                    tempText = tempText.replaceAll("tanR(","tanD(");
+
+                    tempText = tempText.replaceAll("acos(","acosD(");
+                    tempText = tempText.replaceAll("acosR(","acosD(");
+                    tempText = tempText.replaceAll("asin(","asinD(");
+                    tempText = tempText.replaceAll("asinR(","asinD(");
+                    tempText = tempText.replaceAll("atan(","atanD(");
+                    tempText = tempText.replaceAll("atanR(","atanD(");
+
 
                   }else{
-                    tempText = tempText.replaceAll("acos(","cos(");
+                    tempText = tempText.replaceAll("cos(","cosR(");
+                    tempText = tempText.replaceAll("cosD(","cosR(");
+                    tempText = tempText.replaceAll("sin(","sinR(");
+                    tempText = tempText.replaceAll("sinD(","sinR(");
+                    tempText = tempText.replaceAll("tan(","tanR(");
+                    tempText = tempText.replaceAll("tanD(","tanR(");
+
+                    tempText = tempText.replaceAll("acos(","acosR(");
+                    tempText = tempText.replaceAll("acosD(","acosR(");
+                    tempText = tempText.replaceAll("asin(","asinR(");
+                    tempText = tempText.replaceAll("asinD(","asinR(");
+                    tempText = tempText.replaceAll("atan(","atanR(");
+                    tempText = tempText.replaceAll("atanD(","atanR(");
                   }
+                  print(tempText);
                   Result = tempText.interpret();
                   print(tempText.interpret());
                   isShowCursor = false;
@@ -114,18 +146,19 @@ class _HomeWidgetsState extends State<HomeWidgets> {
     return Expanded(
       child: Card(
       //  color:
-        color: Colors.transparent,
+        color: Colors.green,
         elevation: 0,
         margin: EdgeInsets.all(5),
         child: MaterialButton(
           padding: EdgeInsets.all(0),
+          height: double.infinity,
           highlightColor: Color(0xFF363636),
           elevation: 0,
           highlightElevation: 0,
           hoverElevation: 0,
           shape: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5) ,
-                    borderSide: BorderSide(width:0 , color:(_colorBox==Color(0xFFF4F4F4))? Colors.black : Colors.transparent,)),
+                    borderSide: BorderSide(width:0 , color:(_colorBox==Color(0xFFF4F4F4))? Colors.black :(_colorBox==Color(0xFF363636))?Colors.white: Colors.transparent,)),
           color: _colorBox,
           onPressed: ()=> _onPressedButton(_tapping),
           child: _child,
@@ -138,7 +171,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
 
                             [ Text("C" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "init"],
                             [ Icon(Icons.arrow_back , color: Color(0xFFFFFFFF),)  ,Color(0xFFFC8210) , "remove"],
-                            [ Text("%" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "%"],
+                            [ Text("%" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "/100"],
                             [ Text("/" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "/"],
 
                            ];
@@ -147,8 +180,8 @@ class _HomeWidgetsState extends State<HomeWidgets> {
 
                             [Text("X\u207B\u00B9", style: TextStyle(color: Color(0xFFFFFFFF) ,))  ,Color(0xFF363636) , "^(-1)"],
                             [ Text("!", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "!"],
-                            [ Text("ln",  style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "ln("],
-                            [ Text("e\u02e3", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF4363636) ,"e^"]
+                            [Icon(MyFlutterApp.square_root_alt,size: 16 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) ,String.fromCharCode(0x221A)+"("],
+                            [Icon(MyFlutterApp.pi ,size: 18 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) ,String.fromCharCode(0x03C0)]
 
                               ];
   List rowButtonsNumbers2=[
@@ -181,8 +214,8 @@ class _HomeWidgetsState extends State<HomeWidgets> {
 
                               [Text("10\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "*10^("],
                               [Text("Log\u2081\u2080" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"log("],
-                              [Icon(MyFlutterApp.square_root_alt,size: 16 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) ,String.fromCharCode(0x221A)+"("],
-                              [Icon(MyFlutterApp.pi ,size: 18 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) ,String.fromCharCode(0x03C0)]
+                              [ Text("ln",  style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "ln("],
+                              [ Text("e\u02e3", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"e^"],
 
                             ];
   List rowButtonsNumbers4=[
@@ -199,7 +232,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                               [Text("sin" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "sin("],
                               [Text("cos",style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "cos("],
                               [Text("tan" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"tan("],
-                              [Text("|x|" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"abs("]
+                              [Text("ln2",style: TextStyle(color:Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "ln2"],
 
                             ];
   List rowButtonsNumbers5=[
@@ -212,11 +245,10 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                           ];
   List rowButtonsFunctions5=[
 
-                              [Text("cosh" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "cosh("],
-                              [Text("sinh",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"sinh("],
-                              [Text("tanh" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"tanh("],
-                              [Text("ln2",style: TextStyle(color:Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "ln2"],
-
+                              [Text("acos" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "acos("],
+                              [Text("asin",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"asin("],
+                              [Text("atan" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"atan("],
+                              [Text("|x|" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"abs("]
 
                             ];
 
@@ -403,43 +435,45 @@ Widget _bigPad(){
   bool isShowCursor = true;
   TextSelection txtselct = new TextSelection(baseOffset: 0, extentOffset: 0);
   Widget _operationWidget(){
-    return GestureDetector(
-      child:TextField(
-          showCursor: isShowCursor,
-          readOnly: true,
-        autofocus: true,
-        controller: f,
+    return TextField(
 
-        onTap: () {
-         setState(() {
-           isShowCursor = true;
-         });
-          txtselct = f.selection;
-            if(["a","b","c", "g","h","i", "l","n","o" ,"s","t"].contains(f.text[f.selection.baseOffset - 1])){
-               f.selection = TextSelection(
-                   baseOffset: (f.text.indexOf("(", f.selection.baseOffset))+1,
-                   extentOffset: (f.text.indexOf("(", f.selection.baseOffset))+1);
-            }
-           print(f.selection);
+        style: TextStyle(fontSize: 20),
+        showCursor: isShowCursor,
+        readOnly: true,
+      autofocus: true,
+      controller: f,
+
+      onTap: () {
+       setState(() {
+         isShowCursor = true;
+       });
+        txtselct = f.selection;
+          if(["a","b","c", "g","h","i", "l","n","o" ,"s","t"].contains(f.text[f.selection.baseOffset - 1])){
+             f.selection = TextSelection(
+                 baseOffset: (f.text.indexOf("(", f.selection.baseOffset))+1,
+                 extentOffset: (f.text.indexOf("(", f.selection.baseOffset))+1);
+          }
+         print(f.selection);
 
 
-        },
-        decoration: InputDecoration(
+      },
+   /*     decoration: InputDecoration(
+focusedBorder: OutlineInputBorder(
+  borderRadius: BorderRadius.circular(5.0),
 
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: BorderSide(
-              color: Colors.amber,
-              style: BorderStyle.solid,
-            ),
-          ),
-        ),
-        toolbarOptions: ToolbarOptions(
-          cut: true,
-          copy: true,
-          selectAll: true,
-          paste: false,
-        ),
+  borderSide: BorderSide(
+    color: Colors.blue,
+    width: 0,
+    style: BorderStyle.solid,
+  ),
+),
+
+      ),*/
+      toolbarOptions: ToolbarOptions(
+        cut: true,
+        copy: true,
+        selectAll: true,
+        paste: true,
       ),
     );
   }
@@ -452,10 +486,10 @@ Widget _bigPad(){
         Expanded(
             flex: 1,
             child: MaterialButton(
-                        child: Text(rndToDeg),
+                        child: Text(rndToDeg ,style: TextStyle(color: Color(0xFF707070)),),
               padding: EdgeInsets.all(0),
                         height: double.infinity,
-                        color: Colors.amber,
+                        color:Colors.white,
                          onPressed: (){
                           setState(() {
                             (rndToDeg == "Deg")?rndToDeg= "Rnd":rndToDeg= "Deg";
@@ -472,9 +506,10 @@ Widget _bigPad(){
           flex: 1,
           child: MaterialButton(
             height: double.infinity,
-            child: Icon(Icons.history, color: Colors.white,),
+            color: Colors.white,
+            child: Icon(Icons.history, color: Color(0xFF707070),),
             onPressed: (){
-
+              Navigator.of(context).pushNamed('/history');
             },
           ),
         ),
@@ -505,7 +540,8 @@ Widget _bigPad(){
             flex: 1,
             child: Container(
               width: MediaQuery.of(context).size.width,
-              color: Colors.red,
+              height: double.infinity,
+              color: Colors.green,
               child: _operationWidget(),
             ),
           ),
@@ -523,7 +559,7 @@ Widget _bigPad(){
                     flex: (MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?0:1,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      color: Colors.white38,
+                      color: Colors.white,
                         child: Text(Result.toString()),
                     ),
                   ),
@@ -533,7 +569,7 @@ Widget _bigPad(){
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.all(0),
-                      color: Colors.black,
+                      color: Colors.white,
                       child: _tasksWidget(),
                     ),
                   ),
