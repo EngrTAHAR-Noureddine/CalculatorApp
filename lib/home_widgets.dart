@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'package:calculatorflutter/function_tree.dart';
 import 'my_flutter_app_icons.dart';
 
 class HomeWidgets extends StatefulWidget {
@@ -10,18 +10,22 @@ class HomeWidgets extends StatefulWidget {
 }
 
 class _HomeWidgetsState extends State<HomeWidgets> {
-
+  num Result = 0.0;
    _onPressedButton(String _outputChar){
     TextSelection offsetSelection = f.selection;
     List specialChar = ["ln(", "og(", "in(", "os(", "an(", "bs(", "sh(","nh("];
-    String temp;
+
     switch(_outputChar){
       case "init" : setState(() {
+        Result = 0.0;
+          isShowCursor = true;
+
                       f.text="";
                     f.selection = TextSelection(baseOffset: 0 , extentOffset: 0);});
                     break;
-      case "remove":
+      case "remove":  String temp;
                       setState(() {
+                        Result = 0.0;
                         isShowCursor = true;
                         if (f.text.isNotEmpty) {
                           if (f.text.length > 2) {
@@ -56,14 +60,27 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                         }
                       });
                                   break;
-      case "=":
+      case "=": String tempText;
+
+                 //print(f.text.interpret());
+                 tempText  =f.text;
                 setState(() {
+
+                  if(rndToDeg == "Deg"){
+                    tempText = tempText.replaceAll("cos(","acos(");
+
+                  }else{
+                    tempText = tempText.replaceAll("acos(","cos(");
+                  }
+                  Result = tempText.interpret();
+                  print(tempText.interpret());
                   isShowCursor = false;
                 });
         break;
       default :
         if(isShowCursor) {
           setState(() {
+            Result = 0;
             if (f.text.isNotEmpty) {
               f.text =
                   f.text.substring(0, offsetSelection.baseOffset) +
@@ -163,8 +180,8 @@ class _HomeWidgetsState extends State<HomeWidgets> {
   List rowButtonsFunctions3=[
 
                               [Text("10\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "*10^("],
-                              [Text("Log\u2081\u2080" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"Log("],
-                              [Icon(MyFlutterApp.square_root_alt,size: 16 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) , String.fromCharCode(0x221A)+"("],
+                              [Text("Log\u2081\u2080" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"log("],
+                              [Icon(MyFlutterApp.square_root_alt,size: 16 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) ,String.fromCharCode(0x221A)+"("],
                               [Icon(MyFlutterApp.pi ,size: 18 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) ,String.fromCharCode(0x03C0)]
 
                             ];
@@ -198,7 +215,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                               [Text("cosh" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "cosh("],
                               [Text("sinh",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"sinh("],
                               [Text("tanh" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"tanh("],
-                              [Text("e",style: TextStyle(color:Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "e"],
+                              [Text("ln2",style: TextStyle(color:Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "ln2"],
 
 
                             ];
@@ -426,7 +443,45 @@ Widget _bigPad(){
       ),
     );
   }
+  String rndToDeg = "Deg";
+  Widget _tasksWidget() {
+    return Row(
 
+
+      children: [
+        Expanded(
+            flex: 1,
+            child: MaterialButton(
+                        child: Text(rndToDeg),
+              padding: EdgeInsets.all(0),
+                        height: double.infinity,
+                        color: Colors.amber,
+                         onPressed: (){
+                          setState(() {
+                            (rndToDeg == "Deg")?rndToDeg= "Rnd":rndToDeg= "Deg";
+
+                          });
+                         },
+                        ),
+        ),
+        Expanded(
+          flex: 4,
+          child: Container(color: Colors.blue,)
+        ),
+        Expanded(
+          flex: 1,
+          child: MaterialButton(
+            height: double.infinity,
+            child: Icon(Icons.history, color: Colors.white,),
+            onPressed: (){
+
+            },
+          ),
+        ),
+      ],
+    );
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -468,17 +523,18 @@ Widget _bigPad(){
                     flex: (MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?0:1,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      color: Colors.blue,
-
+                      color: Colors.white38,
+                        child: Text(Result.toString()),
                     ),
                   ),
                   Expanded(
-                    /* second segment of Second Section : _historyWidget */
+                    /* second segment of Second Section : _tasksWidget */
                     flex: (MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?0:1,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.all(0),
                       color: Colors.black,
-
+                      child: _tasksWidget(),
                     ),
                   ),
                   Expanded(
@@ -500,3 +556,5 @@ Widget _bigPad(){
     );
   }
 }
+
+

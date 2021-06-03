@@ -27,7 +27,7 @@ class MyFlutterApp {
   MyFlutterApp._();
 
   static const _kFontFam = 'MyFlutterApp';
-  static const String _kFontPkg = null;
+  static const String? _kFontPkg = null;
 
   static const IconData pi = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData square_root_alt = IconData(0xf698, fontFamily: _kFontFam, fontPackage: _kFontPkg);
