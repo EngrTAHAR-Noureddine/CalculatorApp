@@ -1,4 +1,5 @@
 import 'package:calculatorflutter/history.dart';
+import 'package:calculatorflutter/unit_converter.dart';
 import 'package:flutter/material.dart';
 
 import 'home.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
           home:Home(),
       routes: {
         '/history' : (context)=>HistoryWidget(),
+        '/unitconverter' : (context)=>UnitConverter(),
       },
                     );
 

@@ -529,7 +529,7 @@ border:  OutlineInputBorder(
               color: Colors.white,
               child: Icon(Icons.straighten_outlined, color: Color(0xFF707070),),
               onPressed: (){
-                Navigator.of(context).pushNamed('/history');
+                Navigator.of(context).pushNamed('/unitconverter');
               },
             ),
           ),
