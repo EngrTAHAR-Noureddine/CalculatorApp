@@ -134,7 +134,7 @@ _Node _parseString(String expression, List<String> variables) {
   }
 
   // Helper for binary operations implementation.
-  List<String>? _leftRight(String operation) {
+  List<String> _leftRight(String operation) {
     if (expression.contains(operation)) {
       final split = expression.split(operation);
       for (var i = split.length - 1; i > 0; i--) {
@@ -153,7 +153,7 @@ _Node _parseString(String expression, List<String> variables) {
   }
 
   // Helper for binary operation definition.
-  _Node? _binaryOperationCheck(String character, String nodeName,
+  _Node _binaryOperationCheck(String character, String nodeName,
       _Node Function(_Node left, _Node right) generator) {
     final leftRight = _leftRight(character);
     if (leftRight == null) {

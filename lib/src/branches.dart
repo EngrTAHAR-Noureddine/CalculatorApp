@@ -1,7 +1,7 @@
 part of function_tree;
 
 abstract class _Branch extends _Node {
-  late _Node child;
+   _Node child;
 }
 
 class _FunctionBranch extends _Branch {
@@ -12,10 +12,10 @@ class _FunctionBranch extends _Branch {
 
   @override
   num call(Map<String, num> variables) =>
-      _oneParameterFunctionMap[symbol]!(child(variables));
+      _oneParameterFunctionMap[symbol](child(variables));
 
   @override
-  String toTeX() => _oneParameterFunctionLatexRepresentation[symbol]!
+  String toTeX() => _oneParameterFunctionLatexRepresentation[symbol]
       .replaceAll('C', child.toTeX());
 }
 

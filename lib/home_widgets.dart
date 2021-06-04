@@ -1,8 +1,13 @@
+import 'package:calculatorflutter/database.dart';
+import 'package:calculatorflutter/history_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:calculatorflutter/function_tree.dart';
 import 'my_flutter_app_icons.dart';
+
+import 'package:flutter/services.dart';
+
 
 class HomeWidgets extends StatefulWidget {
   @override
@@ -104,8 +109,12 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                     tempText = tempText.replaceAll("atanD(","atanR(");
                   }
                   print(tempText);
-                  Result = tempText.interpret();
+                  Result = (tempText.isNotEmpty)? tempText.interpret() : 0;
                   print(tempText.interpret());
+                  if(tempText.isNotEmpty) {
+                    History newHistory = new History(operandExpression: tempText,result: Result.toString());
+                    DBProvider.db.newHistory(newHistory);
+                  }
                   isShowCursor = false;
                 });
         break;
@@ -437,12 +446,16 @@ Widget _bigPad(){
   Widget _operationWidget(){
     return TextField(
 
-        style: TextStyle(fontSize: 20),
+        style: TextStyle(fontSize: 40),
         showCursor: isShowCursor,
         readOnly: true,
       autofocus: true,
       controller: f,
+      maxLines: 2,
+      maxLength: 30,
 
+
+      textAlignVertical: TextAlignVertical.top,
       onTap: () {
        setState(() {
          isShowCursor = true;
@@ -457,8 +470,14 @@ Widget _bigPad(){
 
 
       },
-   /*     decoration: InputDecoration(
-focusedBorder: OutlineInputBorder(
+     decoration: InputDecoration(
+       isDense: false,
+
+       counterStyle: TextStyle(
+         height: double.minPositive,
+       ),
+       counterText: "",
+border:  OutlineInputBorder(
   borderRadius: BorderRadius.circular(5.0),
 
   borderSide: BorderSide(
@@ -468,7 +487,7 @@ focusedBorder: OutlineInputBorder(
   ),
 ),
 
-      ),*/
+      ),
       toolbarOptions: ToolbarOptions(
         cut: true,
         copy: true,
@@ -486,10 +505,10 @@ focusedBorder: OutlineInputBorder(
         Expanded(
             flex: 1,
             child: MaterialButton(
-                        child: Text(rndToDeg ,style: TextStyle(color: Color(0xFF707070)),),
+                        child: Text(rndToDeg ,style: TextStyle(color: Colors.white),),
               padding: EdgeInsets.all(0),
                         height: double.infinity,
-                        color:Colors.white,
+                        color:Color(0xFF363636),
                          onPressed: (){
                           setState(() {
                             (rndToDeg == "Deg")?rndToDeg= "Rnd":rndToDeg= "Deg";
@@ -500,7 +519,20 @@ focusedBorder: OutlineInputBorder(
         ),
         Expanded(
           flex: 4,
-          child: Container(color: Colors.blue,)
+          child: Container(
+            color: Colors.transparent,
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.all(0),
+            child: MaterialButton(
+              height: double.infinity,
+              elevation: 0,
+              color: Colors.white,
+              child: Icon(Icons.straighten_outlined, color: Color(0xFF707070),),
+              onPressed: (){
+                Navigator.of(context).pushNamed('/history');
+              },
+            ),
+          ),
         ),
         Expanded(
           flex: 1,
@@ -540,7 +572,7 @@ focusedBorder: OutlineInputBorder(
             flex: 1,
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: double.infinity,
+
               color: Colors.green,
               child: _operationWidget(),
             ),
@@ -556,16 +588,17 @@ focusedBorder: OutlineInputBorder(
                 children: [
                   Expanded(
                     /* first segment of Second Section : _resultWidget */
-                    flex: (MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?0:1,
+                    flex: 1,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       color: Colors.white,
-                        child: Text(Result.toString()),
+                        alignment: Alignment.bottomRight,
+                        child: Text(Result.toString(), style: TextStyle(color: Color(0xFF707070), fontSize: 20),),
                     ),
                   ),
                   Expanded(
                     /* second segment of Second Section : _tasksWidget */
-                    flex: (MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?0:1,
+                    flex: 1,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.all(0),
@@ -575,7 +608,7 @@ focusedBorder: OutlineInputBorder(
                   ),
                   Expanded(
                     /* third  segment of Second Section : contains Big_Pad and Small_Pad */
-                    flex: (MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?5:6,
+                    flex: (MediaQuery.of(context).size.width > MediaQuery.of(context).size.height)?4:6,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
 
