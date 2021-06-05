@@ -1,8 +1,8 @@
-import 'package:calculatorflutter/history.dart';
-import 'package:calculatorflutter/unit_converter.dart';
+import 'package:calculatorflutter/View/history.dart';
+import 'package:calculatorflutter/View/unit_converter.dart';
 import 'package:flutter/material.dart';
 
-import 'home.dart';
+import 'View/Calculator.dart';
 
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
@@ -52,6 +52,9 @@ class MyApp extends StatelessWidget {
             colorScheme:  ColorScheme.dark() ),
         appBarTheme: AppBarTheme(
           elevation: 0.0,
+          backgroundColor: Colors.black,
+          iconTheme: IconThemeData(color: Colors.white),
+
         ),
         /* dark theme settings */
       ),

@@ -1,11 +1,11 @@
-import 'package:calculatorflutter/database.dart';
-import 'package:calculatorflutter/history_model.dart';
-import 'package:calculatorflutter/unit_converter.dart';
+import 'package:calculatorflutter/Model/database/database.dart';
+import 'package:calculatorflutter/Model/history_model.dart';
+import 'package:calculatorflutter/View/unit_converter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:calculatorflutter/function_tree.dart';
-import 'my_flutter_app_icons.dart';
+import 'package:calculatorflutter/Model/read_exp_functions/function_tree.dart';
+import '../Model/my_flutter_app_icons.dart';
 
 import 'package:flutter/services.dart';
 
