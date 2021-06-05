@@ -1,5 +1,6 @@
 import 'package:calculatorflutter/database.dart';
 import 'package:calculatorflutter/history_model.dart';
+import 'package:calculatorflutter/unit_converter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -446,26 +447,28 @@ Widget _bigPad(){
   Widget _operationWidget(){
     return TextField(
 
-        style: TextStyle(fontSize: 40),
+        style: TextStyle(fontSize: 20),
         showCursor: isShowCursor,
         readOnly: true,
       autofocus: true,
       controller: f,
-      maxLines: 2,
-      maxLength: 30,
+      expands: true,
+      maxLines: null,
 
 
-      textAlignVertical: TextAlignVertical.top,
+
+      textAlignVertical: TextAlignVertical.bottom,
       onTap: () {
        setState(() {
          isShowCursor = true;
        });
         txtselct = f.selection;
+        if(f.text.isNotEmpty){
           if(["a","b","c", "g","h","i", "l","n","o" ,"s","t"].contains(f.text[f.selection.baseOffset - 1])){
              f.selection = TextSelection(
                  baseOffset: (f.text.indexOf("(", f.selection.baseOffset))+1,
                  extentOffset: (f.text.indexOf("(", f.selection.baseOffset))+1);
-          }
+          }}
          print(f.selection);
 
 
@@ -496,6 +499,81 @@ border:  OutlineInputBorder(
       ),
     );
   }
+
+ Widget  _itemsList(){
+    // Navigator.of(context).pushNamed('/unitconverter');
+
+     List icons=[
+       MyFlutterApp.shapes,
+       MyFlutterApp.straighten,
+       MyFlutterApp.temperatire,
+       MyFlutterApp.cube,
+       MyFlutterApp.balance_scale_left,
+       MyFlutterApp.data_usage
+                ];
+     List titles =["Area","Length","Temperature","Volume","Mass","Data"];
+
+return Container(
+  color: Colors.transparent,
+  alignment: Alignment.centerLeft,
+  padding: EdgeInsets.all(0),
+  child: MaterialButton(
+      height: double.infinity,
+      elevation: 0,
+      color: Colors.white,
+      child: Icon(Icons.straighten_outlined, color: Color(0xFF707070),),
+      onPressed: (){
+        return showModalBottomSheet(
+            context: context,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
+            builder: (context) {
+              return GridView.count(
+                // Create a grid with 2 columns. If you change the scrollDirection to
+                // horizontal, this produces 2 rows.
+                crossAxisCount: (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height)?6:4,
+                crossAxisSpacing: 5,
+                mainAxisSpacing: 5,
+                semanticChildCount: 2,
+                shrinkWrap: true,
+
+                // Generate 100 widgets that display their index in the List.
+                children: List.generate(6, (index) {
+                  return Card(
+                    color: Colors.white,
+
+                    child: Center(
+                      child: Column(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => UnitConverter(unit: titles[index],),
+                                ),
+                              );
+                            },
+                            icon: Icon(icons[index],size: 16 ,color: Color(0xFF707070) ,),
+                          ),
+                          Text(titles[index], style: TextStyle(fontSize: 12,color:Color(0xFF707070))),
+
+                        ],
+                      ),
+                    ),
+                  );
+                }),
+              );
+            });
+
+      }
+  ),
+);
+
+  }
+
+
   String rndToDeg = "Deg";
   Widget _tasksWidget() {
     return Row(
@@ -519,20 +597,7 @@ border:  OutlineInputBorder(
         ),
         Expanded(
           flex: 4,
-          child: Container(
-            color: Colors.transparent,
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.all(0),
-            child: MaterialButton(
-              height: double.infinity,
-              elevation: 0,
-              color: Colors.white,
-              child: Icon(Icons.straighten_outlined, color: Color(0xFF707070),),
-              onPressed: (){
-                Navigator.of(context).pushNamed('/unitconverter');
-              },
-            ),
-          ),
+          child:_itemsList(),
         ),
         Expanded(
           flex: 1,
@@ -625,5 +690,6 @@ border:  OutlineInputBorder(
     );
   }
 }
+
 
 
