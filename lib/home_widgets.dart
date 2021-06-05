@@ -110,9 +110,11 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                     tempText = tempText.replaceAll("atanD(","atanR(");
                   }
                   print(tempText);
-                  Result = (tempText.isNotEmpty)? tempText.interpret() : 0;
-                  print(tempText.interpret());
-                  if(tempText.isNotEmpty) {
+                  try {
+                    Result = (tempText.isNotEmpty) ? tempText.interpret() : 0;
+                  }catch(e){Result = null;}
+
+                  if((tempText.isNotEmpty)&&(Result!=null)) {
                     History newHistory = new History(operandExpression: tempText,result: Result.toString());
                     DBProvider.db.newHistory(newHistory);
                   }
@@ -454,7 +456,7 @@ Widget _bigPad(){
       controller: f,
       expands: true,
       maxLines: null,
-
+      keyboardType: TextInputType.multiline,
 
 
       textAlignVertical: TextAlignVertical.bottom,
@@ -480,11 +482,20 @@ Widget _bigPad(){
          height: double.minPositive,
        ),
        counterText: "",
+focusedBorder:OutlineInputBorder(
+  borderRadius: BorderRadius.circular(5.0),
+
+  borderSide: BorderSide(
+    color: Colors.transparent,
+    width: 0,
+    style: BorderStyle.solid,
+  ),
+) ,
 border:  OutlineInputBorder(
   borderRadius: BorderRadius.circular(5.0),
 
   borderSide: BorderSide(
-    color: Colors.blue,
+    color: Colors.transparent,
     width: 0,
     style: BorderStyle.solid,
   ),
@@ -638,7 +649,7 @@ return Container(
             child: Container(
               width: MediaQuery.of(context).size.width,
 
-              color: Colors.green,
+              color: Colors.white,
               child: _operationWidget(),
             ),
           ),
@@ -657,8 +668,9 @@ return Container(
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       color: Colors.white,
+
                         alignment: Alignment.bottomRight,
-                        child: Text(Result.toString(), style: TextStyle(color: Color(0xFF707070), fontSize: 20),),
+                        child: Text((Result!=null)?Result.toString():"Error", style: TextStyle(color: Color(0xFF707070), fontSize: 20),),
                     ),
                   ),
                   Expanded(
