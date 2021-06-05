@@ -32,7 +32,7 @@ class _UnitConverterViewState extends State<UnitConverterView> {
     toUnit = UnitConverter().Units[UnitConverter().index][indexToUnit];
 
     return Container(
-
+        color: Colors.transparent,
       padding: EdgeInsets.all(20),
       alignment: Alignment.topCenter,
       child: ListView(
@@ -104,7 +104,7 @@ class _UnitConverterViewState extends State<UnitConverterView> {
               contentPadding: EdgeInsets.zero,
               title: TextField(
                   textAlign: TextAlign.right,
-                  style: TextStyle(fontSize: 18, ),
+                  style: TextStyle(fontSize: 18,color: Theme.of(context).primaryColorDark ),
                   maxLines: 1,
                   showCursor: true,
                   controller: Value,

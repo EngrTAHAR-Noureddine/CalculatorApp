@@ -112,14 +112,16 @@ class _UnitConverterState extends State<UnitConverter> {
 
 
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+
         iconTheme: IconThemeData(
-          color: Color(0xFF707070), //change your color here
+          color: Theme.of(context).iconTheme.color, //change your color here
         ),
-        title: Text("Unit Converter", style: TextStyle(color : Color(0xFF707070)),),
-        backgroundColor:Colors.white ,),
+        title: Text("Unit Converter", style: TextStyle(color : Theme.of(context).iconTheme.color),),
+        backgroundColor:Theme.of(context).appBarTheme.backgroundColor ,),
       body: Container(
-        color:Colors.white ,
+        color:Theme.of(context).backgroundColor ,
         child: UnitConverterView(unit: _unit,),
       ),
     );

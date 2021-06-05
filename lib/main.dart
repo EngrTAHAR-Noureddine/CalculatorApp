@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xFF707070) ,
         primaryColorDark: Color(0xFF363636),
         primaryColorLight: Colors.white,
-
         backgroundColor: Colors.white ,
 
         indicatorColor: Color(0xff0E1D36) ,
@@ -65,13 +64,13 @@ class MyApp extends StatelessWidget {
              ),
 
         /* buttonTheme: Theme.of(context).buttonTheme.copyWith(
-            colorScheme:  ColorScheme.dark() ),  
+            colorScheme:  ColorScheme.dark() ),  */
         appBarTheme: AppBarTheme(
           elevation: 0.0,
-          backgroundColor: Colors.black,
-          iconTheme: IconThemeData(color: Colors.white),
+          backgroundColor: Colors.white,
+        //  iconTheme: IconThemeData(color: Colors.white),
 
-        ),*/
+        ),
 
 
       ),

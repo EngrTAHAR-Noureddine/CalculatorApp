@@ -14,16 +14,17 @@ class _HistoryWidgetState extends State<HistoryWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: Color(0xFF707070), //change your color here
+          color: Theme.of(context).iconTheme.color, //change your color here
         ),
-        title: Text("History", style: TextStyle(color : Color(0xFF707070)),),
-        backgroundColor:Colors.white ,
+        title: Text("History", style: TextStyle(color : Theme.of(context).iconTheme.color),),
+        backgroundColor:Theme.of(context).appBarTheme.color ,
       ),
       body: HistoryBody(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xFF707070),
+        backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
         child: Icon(Icons.delete),
         onPressed:(){
           HistoryBody().deleteData();

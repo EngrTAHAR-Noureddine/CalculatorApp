@@ -197,7 +197,7 @@ Widget _bigPad(){
   return Container(
     padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
     width: MediaQuery.of(context).size.width,
-
+    color: Theme.of(context).backgroundColor,
     alignment: Alignment.center,
     child: Column(
       /* mainAxisAlignment: MainAxisAlignment.start,
@@ -244,13 +244,14 @@ Widget _bigPad(){
       length: 2,
       initialIndex: 1,
       child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
           title:TabBar(
-            indicatorColor: Color(0xFF707070),
-            unselectedLabelColor: Colors.black,
-            labelColor: Color(0xFF707070),
+            indicatorColor: Theme.of(context).indicatorColor,
+            unselectedLabelColor:Theme.of(context).tabBarTheme.unselectedLabelColor,
+            labelColor: Theme.of(context).tabBarTheme.labelColor,
 
             tabs: <Widget>[
               Tab(
@@ -364,7 +365,7 @@ Widget _bigPad(){
   Widget _operationWidget(){
     return TextField(
 
-        style: TextStyle(fontSize: 20),
+        style: TextStyle(fontSize: 20 , color: Theme.of(context).primaryColorDark),
         showCursor: isShowCursor,
         readOnly: true,
       autofocus: true,
@@ -447,7 +448,7 @@ return Container(
       height: double.infinity,
       elevation: 0,
       color: Colors.white,
-      child: Icon(Icons.straighten_outlined, color: Color(0xFF707070),),
+      child: Icon(Icons.straighten_outlined, color: Theme.of(context).primaryColor,),
       onPressed: (){
         return showModalBottomSheet(
             context: context,
@@ -467,10 +468,11 @@ return Container(
                 // Generate 100 widgets that display their index in the List.
                 children: List.generate(6, (index) {
                   return Card(
-                    color: Colors.white,
+                    color: Theme.of(context).cardColor,
 
                     child: Center(
                       child: Column(
+
                         children: [
                           IconButton(
                             onPressed: () {
@@ -481,9 +483,9 @@ return Container(
                                 ),
                               );
                             },
-                            icon: Icon(icons[index],size: 16 ,color: Color(0xFF707070) ,),
+                            icon: Icon(icons[index],size: 16 ,color: Theme.of(context).primaryColor ,),
                           ),
-                          Text(titles[index], style: TextStyle(fontSize: 12,color:Color(0xFF707070))),
+                          Text(titles[index], style: TextStyle(fontSize: 12,color:Theme.of(context).primaryColor)),
 
                         ],
                       ),
@@ -509,7 +511,7 @@ return Container(
         Expanded(
             flex: 1,
             child: MaterialButton(
-                        child: Text(Button().rndToDeg ,style: TextStyle(color: Colors.white),),
+                        child: Text(Button().rndToDeg ,style: TextStyle(color: Theme.of(context).primaryColorLight),),
               padding: EdgeInsets.all(0),
                         height: double.infinity,
                         color:Color(0xFF363636),
@@ -529,8 +531,8 @@ return Container(
           flex: 1,
           child: MaterialButton(
             height: double.infinity,
-            color: Colors.white,
-            child: Icon(Icons.history, color: Color(0xFF707070),),
+            color: Theme.of(context).primaryColorLight,
+            child: Icon(Icons.history, color: Theme.of(context).primaryColor,),
             onPressed: (){
               Navigator.of(context).pushNamed('/history');
             },
