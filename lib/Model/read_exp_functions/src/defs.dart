@@ -14,9 +14,15 @@ final Map<String, String> _twoParameterFunctionLatexRepresentation = {
   'pow': r'{C1}^{C2}'
 };
 
+num factorial(num n) {
+  if (n < 0) throw ('Negative numbers are not allowed.');
+  return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
 /// A mapping of string representations to functions.
 final Map<String, num Function(num)> _oneParameterFunctionMap = {
   'abs': (num x) => x.abs(),
+  '!': (num x) => factorial(x),
   'acosR':(num x)=> acos(x),
   'acosD': (num x)=> num.parse((( acos(x) / pi) *180.0 ).toStringAsFixed(2)),
   'asinR': (num x)=>asin(x),
@@ -53,7 +59,7 @@ final Map<String, String> _oneParameterFunctionLatexRepresentation = {
   'abs': r'\left| C \right| ',
   'acosR': r'\arccos\left( C \right) ',
   'acosD': r'\arccos\left( C \right) ',
-
+  '!': r'\!\left( C \right) ',
   'asinR': r'\arcsin\left( C \right) ',
   'asinD': r'\arcsin\left( C \right) ',
 

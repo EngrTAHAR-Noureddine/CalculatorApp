@@ -1,3 +1,4 @@
+import 'package:calculatorflutter/Model/button.dart';
 import 'package:calculatorflutter/Model/database/database.dart';
 import 'package:calculatorflutter/Model/history_model.dart';
 import 'package:calculatorflutter/View/unit_converter.dart';
@@ -10,12 +11,12 @@ import '../Model/my_flutter_app_icons.dart';
 import 'package:flutter/services.dart';
 
 
-class HomeWidgets extends StatefulWidget {
+class CalculatorWidgets extends StatefulWidget {
   @override
-  _HomeWidgetsState createState() => _HomeWidgetsState();
+  _CalculatorWidgetsState createState() => _CalculatorWidgetsState();
 }
 
-class _HomeWidgetsState extends State<HomeWidgets> {
+class _CalculatorWidgetsState extends State<CalculatorWidgets> {
   num Result = 0.0;
    _onPressedButton(String _outputChar){
     TextSelection offsetSelection = f.selection;
@@ -74,11 +75,10 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                   break;
       case "=": String tempText;
 
-                 //print(f.text.interpret());
                  tempText  =f.text;
                 setState(() {
 
-                  if(rndToDeg == "Deg"){
+                  if(Button().rndToDeg == "Deg"){
                     tempText = tempText.replaceAll("cos(","cosD(");
                     tempText = tempText.replaceAll("cosR(","cosD(");
                     tempText = tempText.replaceAll("sin(","sinD(");
@@ -112,7 +112,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                   print(tempText);
                   try {
                     Result = (tempText.isNotEmpty) ? tempText.interpret() : 0;
-                  }catch(e){Result = null;}
+                  }catch(e){Result = null; print(e);}
 
                   if((tempText.isNotEmpty)&&(Result!=null)) {
                     History newHistory = new History(operandExpression: tempText,result: Result.toString());
@@ -179,90 +179,6 @@ class _HomeWidgetsState extends State<HomeWidgets> {
     );
   }
 
-  List rowButtonsNumbers1=[
-
-                            [ Text("C" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "init"],
-                            [ Icon(Icons.arrow_back , color: Color(0xFFFFFFFF),)  ,Color(0xFFFC8210) , "remove"],
-                            [ Text("%" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "/100"],
-                            [ Text("/" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "/"],
-
-                           ];
-
-  List rowButtonsFunctions1=[
-
-                            [Text("X\u207B\u00B9", style: TextStyle(color: Color(0xFFFFFFFF) ,))  ,Color(0xFF363636) , "^(-1)"],
-                            [ Text("!", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "!"],
-                            [Icon(MyFlutterApp.square_root_alt,size: 16 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) ,String.fromCharCode(0x221A)+"("],
-                            [Icon(MyFlutterApp.pi ,size: 18 ,color: Color(0xFFFFFFFF) ,) ,Color(0xFF363636) ,String.fromCharCode(0x03C0)]
-
-                              ];
-  List rowButtonsNumbers2=[
-
-                            [Text("7" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "7"],
-                            [Text("8" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "8"],
-                            [Text("9" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "9"],
-                            [Text("X" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "*"],
-
-
-                            ];
-  List rowButtonsFunctions2=[
-
-                              [Text("(" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "("],
-                              [Text(")",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,")"],
-                              [Text("x²" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "^(2)"],
-                              [Text("x\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"^("],
-
-
-                            ];
-  List rowButtonsNumbers3=[
-
-                            [Text("4" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "4"],
-                            [Text("5" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "5"],
-                            [Text("6" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "6"],
-                            [Text("-",style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) ,"-"],
-
-                          ];
-  List rowButtonsFunctions3=[
-
-                              [Text("10\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "*10^("],
-                              [Text("Log\u2081\u2080" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"log("],
-                              [ Text("ln",  style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "ln("],
-                              [ Text("e\u02e3", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"e^"],
-
-                            ];
-  List rowButtonsNumbers4=[
-
-                            [Text("1",style: TextStyle(color: Color(0xFF707070))) ,Color(0xFFF4F4F4) , "1"],
-                            [Text("2" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "2" ],
-                            [Text("3" ,style: TextStyle(color: Color(0xFF707070))) ,Color(0xFFF4F4F4) ,"3" ],
-                            [Text("+" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) ,"+" ],
-
-
-                          ];
-  List rowButtonsFunctions4=[
-
-                              [Text("sin" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "sin("],
-                              [Text("cos",style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "cos("],
-                              [Text("tan" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"tan("],
-                              [Text("ln2",style: TextStyle(color:Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "ln2"],
-
-                            ];
-  List rowButtonsNumbers5=[
-
-                            [Text("+/-" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "*(-1)"],
-                            [Text("0" ,style: TextStyle(color:  Color(0xFF707070))) ,Color(0xFFF4F4F4) , "0"],
-                            [Text("." ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "."],
-                            [Text("=",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFFFC8210) , "="],
-
-                          ];
-  List rowButtonsFunctions5=[
-
-                              [Text("acos" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "acos("],
-                              [Text("asin",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"asin("],
-                              [Text("atan" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"atan("],
-                              [Text("|x|" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"abs("]
-
-                            ];
 
   List<Widget> _rowButtons(list){
 
@@ -274,8 +190,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
     });
 
   }
-List rowButtons=[4];
-bool states = false;
+
 
 Widget _bigPad(){
 
@@ -292,31 +207,31 @@ Widget _bigPad(){
 
           child: Row(
 
-            children: _rowButtons(rowButtonsFunctions1+rowButtonsNumbers1),
+            children: _rowButtons(Button().rowButtonsFunctions[0]+Button().rowButtonsNumbers[0]),
           ),
         ),
         Expanded(
           child: Row(
 
-            children: _rowButtons(rowButtonsFunctions2+rowButtonsNumbers2),
+            children: _rowButtons(Button().rowButtonsFunctions[1]+Button().rowButtonsNumbers[1]),
           ),
         ),
         Expanded(
           child: Row(
 
-            children: _rowButtons(rowButtonsFunctions3+rowButtonsNumbers3),
+            children: _rowButtons(Button().rowButtonsFunctions[2]+Button().rowButtonsNumbers[2]),
           ),
         ),
         Expanded(
           child: Row(
 
-            children: _rowButtons(rowButtonsFunctions4+rowButtonsNumbers4),
+            children: _rowButtons(Button().rowButtonsFunctions[3]+Button().rowButtonsNumbers[3]),
           ),
         ),
         Expanded(
           child: Row(
 
-            children: _rowButtons(rowButtonsFunctions5+rowButtonsNumbers5),
+            children: _rowButtons(Button().rowButtonsFunctions[4]+Button().rowButtonsNumbers[4]),
           ),
         ),
       ],
@@ -362,31 +277,31 @@ Widget _bigPad(){
 
                     child: Row(
 
-                      children: _rowButtons(rowButtonsFunctions1),
+                      children: _rowButtons(Button().rowButtonsFunctions[0]),
                     ),
                   ),
                   Expanded(
                     child: Row(
 
-                      children: _rowButtons(rowButtonsFunctions2),
+                      children: _rowButtons(Button().rowButtonsFunctions[1]),
                     ),
                   ),
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: _rowButtons(rowButtonsFunctions3),
+                      children: _rowButtons(Button().rowButtonsFunctions[2]),
                     ),
                   ),
                   Expanded(
                     child: Row(
 
-                      children: _rowButtons(rowButtonsFunctions4),
+                      children: _rowButtons(Button().rowButtonsFunctions[3]),
                     ),
                   ),
                   Expanded(
                     child: Row(
 
-                      children: _rowButtons(rowButtonsFunctions5),
+                      children: _rowButtons(Button().rowButtonsFunctions[4]),
                     ),
                   ),
                 ],
@@ -406,31 +321,31 @@ Widget _bigPad(){
 
                     child: Row(
 
-                      children: _rowButtons(rowButtonsNumbers1),
+                      children: _rowButtons(Button().rowButtonsNumbers[0]),
                     ),
                   ),
                   Expanded(
                     child: Row(
 
-                      children: _rowButtons(rowButtonsNumbers2),
+                      children: _rowButtons(Button().rowButtonsNumbers[1]),
                     ),
                   ),
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: _rowButtons(rowButtonsNumbers3),
+                      children: _rowButtons(Button().rowButtonsNumbers[2]),
                     ),
                   ),
                   Expanded(
                     child: Row(
 
-                      children: _rowButtons(rowButtonsNumbers4),
+                      children: _rowButtons(Button().rowButtonsNumbers[3]),
                     ),
                   ),
                   Expanded(
                     child: Row(
 
-                      children: _rowButtons(rowButtonsNumbers5),
+                      children: _rowButtons(Button().rowButtonsNumbers[4]),
                     ),
                   ),
                 ],
@@ -585,7 +500,7 @@ return Container(
   }
 
 
-  String rndToDeg = "Deg";
+
   Widget _tasksWidget() {
     return Row(
 
@@ -594,13 +509,13 @@ return Container(
         Expanded(
             flex: 1,
             child: MaterialButton(
-                        child: Text(rndToDeg ,style: TextStyle(color: Colors.white),),
+                        child: Text(Button().rndToDeg ,style: TextStyle(color: Colors.white),),
               padding: EdgeInsets.all(0),
                         height: double.infinity,
                         color:Color(0xFF363636),
                          onPressed: (){
                           setState(() {
-                            (rndToDeg == "Deg")?rndToDeg= "Rnd":rndToDeg= "Deg";
+                            (Button().rndToDeg == "Deg")?Button().rndToDeg= "Rnd":Button().rndToDeg= "Deg";
 
                           });
                          },
@@ -649,7 +564,7 @@ return Container(
             child: Container(
               width: MediaQuery.of(context).size.width,
 
-              color: Colors.white,
+              color: Theme.of(context).backgroundColor,
               child: _operationWidget(),
             ),
           ),
@@ -659,7 +574,7 @@ return Container(
             flex: 3,
             child: Container(
               width: MediaQuery.of(context).size.width,
-              color:Colors.white,// Color(0xFFDFE0DF),
+              color:Theme.of(context).backgroundColor,// Color(0xFFDFE0DF),
               child: Column(
                 children: [
                   Expanded(
@@ -667,10 +582,15 @@ return Container(
                     flex: 1,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      color: Colors.white,
+                    
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).backgroundColor,
+                        shape: BoxShape.rectangle,
+                          border: Border.all(color: Theme.of(context).primaryColorDark)
+                      ),
 
                         alignment: Alignment.bottomRight,
-                        child: Text((Result!=null)?Result.toString():"Error", style: TextStyle(color: Color(0xFF707070), fontSize: 20),),
+                        child: Text((Result!=null)?(Result==0)?Result.toStringAsFixed(0).toString():Result.toString().replaceAll(RegExp(r"([.]*0)(?!.*\d)"), ""):"Error", style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20),),
                     ),
                   ),
                   Expanded(
@@ -679,7 +599,11 @@ return Container(
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.all(0),
-                      color: Colors.white,
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).backgroundColor,
+                          shape: BoxShape.rectangle,
+                          border: Border.all(color: Theme.of(context).primaryColorDark)
+                      ),
                       child: _tasksWidget(),
                     ),
                   ),

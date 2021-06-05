@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../View_Model/Calculator.dart';
 
-class Home extends StatefulWidget {
+class Calculator extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _CalculatorState createState() => _CalculatorState();
 }
 
-class _HomeState extends State<Home> {
+class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     return Directionality( textDirection: TextDirection.ltr, /* rtl : dir kolech right to left ; ltr : left to right ; */
@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
           backgroundColor: Colors.white,
 
 
-          body: HomeWidgets(),
+          body: CalculatorWidgets(),
 
 
 

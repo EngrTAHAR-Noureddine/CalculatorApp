@@ -1,5 +1,6 @@
 import 'package:calculatorflutter/View/history.dart';
 import 'package:calculatorflutter/View/unit_converter.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'View/Calculator.dart';
@@ -13,19 +14,31 @@ class MyApp extends StatelessWidget {
 
 
     return MaterialApp(
-      theme: ThemeData(
+      theme: ThemeData( /*Light */
         brightness: Brightness.light,
-        /* light theme settings */
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.red,
-        primaryColor: Colors.black ,
+        primaryColorBrightness: Brightness.light,
 
-        backgroundColor: Colors.black ,
+        primarySwatch: Colors.red,
+        primaryColor: Color(0xFF707070) ,
+        primaryColorDark: Color(0xFF363636),
+        primaryColorLight: Colors.white,
+
+        backgroundColor: Colors.white ,
 
         indicatorColor: Color(0xff0E1D36) ,
-        buttonColor: Color(0xff3B3B3B) ,
+
+
+        buttonColor: Colors.white ,
+
+
+        //accentColor: Colors.black,
+
+        iconTheme: IconThemeData(color: Color(0xFF707070) ,),
+        primaryIconTheme: IconThemeData(color: Color(0xFF707070)),
+
+
+        floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Color(0xFF707070)),
+
 
         hintColor: Color(0xff280C0B) ,
         highlightColor: Color(0xff372901) ,
@@ -34,34 +47,41 @@ class MyApp extends StatelessWidget {
         focusColor: Color(0xff0B2512),
         disabledColor: Colors.grey,
 
-        cardColor:  Color(0xFF151515) ,
-        canvasColor: Colors.black ,
-        inputDecorationTheme: InputDecorationTheme(
-          labelStyle: TextStyle(color: Colors.blue),
-        ),
-        bottomAppBarColor: Colors.black,
-        cardTheme: CardTheme(
-            color: Colors.black
-        ),
-        popupMenuTheme: PopupMenuThemeData(color: Colors.black),
-        bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black),
-        scaffoldBackgroundColor: Colors.black,
-        tabBarTheme: TabBarTheme(labelColor: Colors.black,unselectedLabelColor: Colors.black),
+        cardColor:  Colors.white ,
 
-        buttonTheme: Theme.of(context).buttonTheme.copyWith(
-            colorScheme:  ColorScheme.dark() ),
+
+
+        cardTheme: CardTheme(
+          color: Colors.white,
+        ),
+        popupMenuTheme: PopupMenuThemeData(color: Color(0xFF707070)),
+
+
+        bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.white),
+
+        scaffoldBackgroundColor: Colors.white,
+
+        tabBarTheme: TabBarTheme(labelColor: Color(0xFF707070),unselectedLabelColor: Colors.black ,
+             ),
+
+        /* buttonTheme: Theme.of(context).buttonTheme.copyWith(
+            colorScheme:  ColorScheme.dark() ),  
         appBarTheme: AppBarTheme(
           elevation: 0.0,
           backgroundColor: Colors.black,
           iconTheme: IconThemeData(color: Colors.white),
 
-        ),
-        /* dark theme settings */
+        ),*/
+
+
       ),
-      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
           title: 'nCalculator',
-          home:Home(),
+          home:Calculator(),
       routes: {
         '/history' : (context)=>HistoryWidget(),
         '/unitconverter' : (context)=>UnitConverter(),

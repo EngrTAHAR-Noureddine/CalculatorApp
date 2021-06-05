@@ -1,6 +1,6 @@
 part of function_tree;
 
-final _filth = RegExp(r'[^0-9a-zA-Z_.+\-/*%^(),^[\x00-\x7F]+$]');
+final _filth = RegExp(r'[^0-9a-zA-Z_.+\-/*%^(),^[\x00-\x7F]+$], ^!(\d)');
 String _cleanExpression(String expression) {
   return expression.replaceAll(_filth, '');
 }
