@@ -32,14 +32,14 @@ class _UnitConverterViewState extends State<UnitConverterView> {
     toUnit = UnitConverter().Units[UnitConverter().index][indexToUnit];
 
     return Container(
-        color: Colors.transparent,
+        color: Theme.of(context).backgroundColor,
       padding: EdgeInsets.all(20),
       alignment: Alignment.topCenter,
       child: ListView(
         children: [
           Container(
               alignment: Alignment.centerLeft,
-              child: Text(unit+" : " , style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold , color: Colors.black, ),)),
+              child: Text(unit+" : " , style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold , color: Theme.of(context).primaryColorDark, ),)),
           SizedBox(
             height: 10,
           ),
@@ -100,7 +100,7 @@ class _UnitConverterViewState extends State<UnitConverterView> {
               FocusScope.of(context).requestFocus(new FocusNode());
             },
             child: ListTile(
-              trailing: Text(UnitConverter().UnitLogo[UnitConverter().index][indexFromUnit]),
+              trailing: Text(UnitConverter().UnitLogo[UnitConverter().index][indexFromUnit] , style: TextStyle(color: Theme.of(context).primaryColor),),
               contentPadding: EdgeInsets.zero,
               title: TextField(
                   textAlign: TextAlign.right,
@@ -111,6 +111,7 @@ class _UnitConverterViewState extends State<UnitConverterView> {
                   autofocus: true,
                   minLines: 1,
                   keyboardType: TextInputType.number,
+
                   decoration: InputDecoration(
                     isDense: false,
                     // suffix :
@@ -118,12 +119,24 @@ class _UnitConverterViewState extends State<UnitConverterView> {
                       height: double.minPositive,
                     ),
                     counterText: "",
-                    border:  OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
+                    focusedBorder:OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
 
                       borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 0,
+                        color: Theme.of(context).accentColor,
+                        width: 1,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    hintText: "0",
+                    hintStyle: TextStyle(color: Theme.of(context).primaryColorDark),
+
+                    enabledBorder:  OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+
+                      borderSide: BorderSide(
+                        color: Theme.of(context).accentColor,
+                        width: 1,
                         style: BorderStyle.solid,
                       ),
                     ),
@@ -203,23 +216,23 @@ class _UnitConverterViewState extends State<UnitConverterView> {
             margin: EdgeInsets.only(bottom: 10),
 
             decoration: ShapeDecoration(
-              color: Color(0xFFF4F4F4),
+              color: Theme.of(context).backgroundColor,
 
 
               shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.black, width: 1,),
+                side: BorderSide(color: Theme.of(context).accentColor, width: 1,),
                 borderRadius: BorderRadius.circular(10),
 
               ),
             ),
             child: ListTile(
 
-              trailing: Text(UnitConverter().UnitLogo[UnitConverter().index][indexToUnit] , style: TextStyle(color: Color(0xFF363636)),),
+              trailing: Text(UnitConverter().UnitLogo[UnitConverter().index][indexToUnit] , style: TextStyle(color: Theme.of(context).primaryColor),),
               title: Container(
                   alignment: Alignment.centerRight,
                   child: RichText(
                       softWrap: true,
-                      text: TextSpan(text:  result.toString() , style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal , color: Color(0xFF363636), )))),
+                      text: TextSpan(text:  result.toString() , style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal , color: Theme.of(context).primaryColorDark, )))),
 
             ),
           ),

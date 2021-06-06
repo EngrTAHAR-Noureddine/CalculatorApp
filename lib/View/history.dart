@@ -19,13 +19,13 @@ class _HistoryWidgetState extends State<HistoryWidget> {
         iconTheme: IconThemeData(
           color: Theme.of(context).iconTheme.color, //change your color here
         ),
-        title: Text("History", style: TextStyle(color : Theme.of(context).iconTheme.color),),
+        title: Text("History", style: TextStyle(color : Theme.of(context).primaryColorDark),),
         backgroundColor:Theme.of(context).appBarTheme.color ,
       ),
       body: HistoryBody(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
-        child: Icon(Icons.delete),
+        child: Icon(Icons.delete ,  color: Theme.of(context).primaryColorDark,),
         onPressed:(){
           HistoryBody().deleteData();
           setState(() {});

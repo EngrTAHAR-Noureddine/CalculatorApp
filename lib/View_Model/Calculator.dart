@@ -246,7 +246,7 @@ Widget _bigPad(){
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           elevation: 0,
           title:TabBar(
             indicatorColor: Theme.of(context).indicatorColor,
@@ -447,7 +447,7 @@ return Container(
   child: MaterialButton(
       height: double.infinity,
       elevation: 0,
-      color: Colors.white,
+      color: Theme.of(context).backgroundColor,
       child: Icon(Icons.straighten_outlined, color: Theme.of(context).primaryColor,),
       onPressed: (){
         return showModalBottomSheet(
@@ -462,12 +462,51 @@ return Container(
                 crossAxisCount: (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height)?6:4,
                 crossAxisSpacing: 5,
                 mainAxisSpacing: 5,
+                padding: EdgeInsets.all(10),
                 semanticChildCount: 2,
                 shrinkWrap: true,
 
                 // Generate 100 widgets that display their index in the List.
                 children: List.generate(6, (index) {
                   return Card(
+                      //  color:
+                      color: Theme.of(context).cardColor,
+                      elevation: 0,
+                      margin: EdgeInsets.all(2),
+                  child: MaterialButton(
+                  padding: EdgeInsets.all(0),
+                  height: double.infinity,
+
+                  highlightColor: Color(0xFF363636),
+                  elevation: 1,
+                  highlightElevation: 0,
+                  hoverElevation: 0,
+                  shape: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5) ,
+                  borderSide: BorderSide(width:0 , color:Theme.of(context).cardColor)),
+                  color: Theme.of(context).cardColor,
+                  onPressed: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => UnitConverter(unit: titles[index],),
+                  ),
+                  );
+                  },
+                  child: Center(
+                    child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(icons[index],size: 25 ,color: Theme.of(context).primaryColorDark ,),
+                          SizedBox(height: 2,),
+                        Text(titles[index], style: TextStyle(fontSize: 10,color:Theme.of(context).primaryColorDark)),
+
+                      ],
+                    ),
+                  ),
+                  ));
+
+                    /*Card(
                     color: Theme.of(context).cardColor,
 
                     child: Center(
@@ -483,14 +522,14 @@ return Container(
                                 ),
                               );
                             },
-                            icon: Icon(icons[index],size: 16 ,color: Theme.of(context).primaryColor ,),
+                            icon: Icon(icons[index],size: 16 ,color: Theme.of(context).primaryColorDark ,),
                           ),
-                          Text(titles[index], style: TextStyle(fontSize: 12,color:Theme.of(context).primaryColor)),
+                          Text(titles[index], style: TextStyle(fontSize: 12,color:Theme.of(context).primaryColorDark)),
 
                         ],
                       ),
                     ),
-                  );
+                  );*/
                 }),
               );
             });
@@ -531,7 +570,7 @@ return Container(
           flex: 1,
           child: MaterialButton(
             height: double.infinity,
-            color: Theme.of(context).primaryColorLight,
+            color: Theme.of(context).backgroundColor,
             child: Icon(Icons.history, color: Theme.of(context).primaryColor,),
             onPressed: (){
               Navigator.of(context).pushNamed('/history');
@@ -588,7 +627,10 @@ return Container(
                       decoration: BoxDecoration(
                           color: Theme.of(context).backgroundColor,
                         shape: BoxShape.rectangle,
-                          border: Border.all(color: Theme.of(context).primaryColorDark)
+                       border: Border(
+                          top: BorderSide(width: 1.0, color: Theme.of(context).primaryColorDark,),
+                          bottom: BorderSide(width: 1.0, color:Theme.of(context).primaryColorDark),
+                        ),//color: Theme.of(context).primaryColorDark)
                       ),
 
                         alignment: Alignment.bottomRight,
@@ -604,7 +646,11 @@ return Container(
                       decoration: BoxDecoration(
                           color: Theme.of(context).backgroundColor,
                           shape: BoxShape.rectangle,
-                          border: Border.all(color: Theme.of(context).primaryColorDark)
+                          border: Border(
+                           // top: BorderSide(width: 0.5, color: Theme.of(context).primaryColorDark,),
+                            bottom: BorderSide(width: 1.0, color:Theme.of(context).primaryColorDark),
+                          ),
+                          //border: Border.all(color: Theme.of(context).primaryColorDark)
                       ),
                       child: _tasksWidget(),
                     ),

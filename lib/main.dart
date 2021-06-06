@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primaryColorBrightness: Brightness.light,
 
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
         primaryColor: Color(0xFF707070) ,
         primaryColorDark: Color(0xFF363636),
         primaryColorLight: Colors.white,
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
 
         indicatorColor: Color(0xff0E1D36) ,
 
-
+        accentColor: Colors.blue,
         buttonColor: Colors.white ,
 
 
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
         cardTheme: CardTheme(
           color: Colors.white,
         ),
-        popupMenuTheme: PopupMenuThemeData(color: Color(0xFF707070)),
+        popupMenuTheme: PopupMenuThemeData(color: Colors.white),
 
 
         bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.white),
@@ -74,8 +74,71 @@ class MyApp extends StatelessWidget {
 
 
       ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
+      darkTheme: ThemeData( /*Dark */
+        brightness: Brightness.light,
+        primaryColorBrightness: Brightness.dark,
+
+        primarySwatch: Colors.red,
+        primaryColor: Color(0xFF707070) ,
+        primaryColorDark: Colors.white,//Color(0xFF363636),
+        primaryColorLight: Colors.white,
+        backgroundColor: Colors.black ,
+
+        indicatorColor: Colors.white,//Color(0xff0E1D36) ,
+        accentColor: Colors.white,
+
+        buttonColor: Colors.black ,
+
+
+        //accentColor: Colors.black,
+
+        iconTheme: IconThemeData(color: Color(0xFF707070) ,),
+        primaryIconTheme: IconThemeData(color: Color(0xFF707070)),
+
+
+        floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Colors.black,),
+
+
+       /* hintColor: Color(0xff280C0B) ,
+        highlightColor: Color(0xff372901) ,
+        hoverColor:  Color(0xff3A3A3B),
+*/
+        focusColor: Colors.white,
+        disabledColor: Colors.grey,
+
+        cardColor:  Colors.white12 ,
+
+
+
+        cardTheme: CardTheme(
+          color: Colors.white,
+        ),
+        popupMenuTheme: PopupMenuThemeData(color: Color(0xFF707070)),
+
+
+        bottomSheetTheme: BottomSheetThemeData(
+            modalBackgroundColor: Color(0xFF222222),
+        //    backgroundColor: Color(0xFF222222)
+        ),
+
+        scaffoldBackgroundColor: Color(0xFF222222),
+
+        tabBarTheme: TabBarTheme(
+          labelColor: Color(0xFF707070), //#222222
+          unselectedLabelColor: Colors.white38 ,
+
+        ),
+
+        /* buttonTheme: Theme.of(context).buttonTheme.copyWith(
+            colorScheme:  ColorScheme.dark() ),  */
+        appBarTheme: AppBarTheme(
+          elevation: 0.0,
+          backgroundColor: Colors.black,
+          //  iconTheme: IconThemeData(color: Colors.white),
+
+        ),
+
+
       ),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,

@@ -28,16 +28,16 @@ class _HistoryBodyState extends State<HistoryBody> {
 
         if (snapshot.hasData) {
           if(snapshot.data.isEmpty){
-            return Center(child: Text("no history"),);
+            return Center(child: Text("no history" ,style: TextStyle(color: Theme.of(context).primaryColorDark),),);
           }else{
             return ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext context, int index) {
                 History item = snapshot.data[index];
                 return ListTile(
-                  title: Text(item.operandExpression),
+                  title: Text(item.operandExpression, style: TextStyle(color: Theme.of(context).primaryColorDark)),
 
-                  subtitle:  Text("= "+item.result),
+                  subtitle:  Text("= "+item.result,style: TextStyle(color: Theme.of(context).primaryColor)),
                 );
               },
             );}
