@@ -137,7 +137,13 @@ class MyApp extends StatelessWidget {
           //  iconTheme: IconThemeData(color: Colors.white),
 
         ),
-
+/* //TODO
+* icon of history in light mode is note light
+* and remove char in expression raho yremovi men tali
+* 12345 ki ji tremovi 3 yremovi 5
+*
+*
+* */
 
       ),
       themeMode: ThemeMode.system,
