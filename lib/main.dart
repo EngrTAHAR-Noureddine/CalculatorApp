@@ -148,7 +148,7 @@ class MyApp extends StatelessWidget {
       ),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-          title: 'nCalculator',
+          title: 'Calculator',
           home:Calculator(),
       routes: {
         '/history' : (context)=>HistoryWidget(),

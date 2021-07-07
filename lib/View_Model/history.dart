@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:calculatorflutter/Model/database/database.dart';
 import 'package:calculatorflutter/Model/history_model.dart';
 import 'package:flutter/material.dart';
