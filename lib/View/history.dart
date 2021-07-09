@@ -24,8 +24,8 @@ class _HistoryWidgetState extends State<HistoryWidget> {
       ),
       body: HistoryBody(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
-        child: Icon(Icons.delete ,  color: Theme.of(context).primaryColorDark,),
+        backgroundColor: Theme.of(context).dividerColor,
+        child: Icon(Icons.delete ,  color: Colors.white,),
         onPressed:(){
           HistoryBody().deleteData();
           setState(() {});

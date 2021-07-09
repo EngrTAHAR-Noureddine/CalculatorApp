@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primaryColorDark: Color(0xFF363636),
         primaryColorLight: Colors.white,
         backgroundColor: Colors.white ,
-
+         dividerColor: Colors.blue,
         indicatorColor: Color(0xff0E1D36) ,
 
         accentColor: Colors.blue,
@@ -82,12 +82,12 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xFF707070) ,
         primaryColorDark: Colors.white,//Color(0xFF363636),
         primaryColorLight: Colors.white,
-        backgroundColor: Colors.black ,
-
+        backgroundColor: Color(0xFF121212) ,
+        dividerColor:Color(0xFF121212),
         indicatorColor: Colors.white,//Color(0xff0E1D36) ,
         accentColor: Colors.white,
 
-        buttonColor: Colors.black ,
+        buttonColor: Color(0xFF121212) ,
 
 
         //accentColor: Colors.black,
@@ -96,7 +96,7 @@ class MyApp extends StatelessWidget {
         primaryIconTheme: IconThemeData(color: Color(0xFF707070)),
 
 
-        floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Colors.black,),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Color(0xFF121212),),
 
 
        /* hintColor: Color(0xff280C0B) ,
@@ -133,7 +133,7 @@ class MyApp extends StatelessWidget {
             colorScheme:  ColorScheme.dark() ),  */
         appBarTheme: AppBarTheme(
           elevation: 0.0,
-          backgroundColor: Colors.black,
+          backgroundColor:Color(0xFF121212),
           //  iconTheme: IconThemeData(color: Colors.white),
 
         ),
