@@ -129,7 +129,7 @@ class _UnitConverterViewState extends State<UnitConverterView> {
                       ),
                     ),
                     hintText: "0",
-                    hintStyle: TextStyle(color: Theme.of(context).primaryColorDark),
+                    hintStyle: TextStyle(color: Colors.grey),
 
                     enabledBorder:  OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
