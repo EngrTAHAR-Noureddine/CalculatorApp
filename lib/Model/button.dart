@@ -6,35 +6,35 @@ import 'package:flutter/material.dart';
 [ //Row1
     [ Text("C" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "init"],
     [ Icon(Icons.arrow_back , color: Color(0xFFFFFFFF),)  ,Color(0xFFFC8210) , "remove"],
-    [ Text("%" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "/100"],
-    [ Text("/" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "/"],
+    [ Text("(" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "("],
+    [ Text(")" , style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , ")"],
 ],
 [ //Row2
         [Text("7" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "7"],
         [Text("8" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "8"],
         [Text("9" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "9"],
-        [Text("X" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "*"],
+        [Text("/" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) , "/"],
 
 ],
 [ //Row3
       [Text("4" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "4"],
       [Text("5" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "5"],
       [Text("6" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "6"],
-      [Text("-",style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) ,"-"],
+      [Text("X",style: TextStyle(fontSize : 16,color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) ,"*"],
 
 ],
 [ //Row4
         [Text("1",style: TextStyle(color: Color(0xFF707070))) ,Color(0xFFF4F4F4) , "1"],
         [Text("2" ,style: TextStyle(color: Color(0xFF707070)))  ,Color(0xFFF4F4F4) , "2" ],
         [Text("3" ,style: TextStyle(color: Color(0xFF707070))) ,Color(0xFFF4F4F4) ,"3" ],
-        [Text("+" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) ,"+" ],
+        [Text("-" ,style: TextStyle(fontSize : 20,color: Color(0xFFFFFFFF)))  ,Color(0xFFFC8210) ,"-" ],
 
 ],
 [ //Row5
-      [Text("0" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "0"],
-      [Text("." ,style: TextStyle(color:  Color(0xFF707070))) ,Color(0xFFF4F4F4) , "."],
-      [Text("=" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "="],
-      [Text("+",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFFFC8210) , "+"],
+      [Text("." ,style: TextStyle(fontSize : 16,color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "."],
+      [Text("0" ,style: TextStyle(color:  Color(0xFF707070))) ,Color(0xFFF4F4F4) , "0"],
+      [Text("=" ,style: TextStyle(fontSize : 20,color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "="],
+      [Text("+",style: TextStyle(fontSize : 16,color: Color(0xFFFFFFFF))) ,Color(0xFFFC8210) , "+"],
 ]
   ];
   List rowButtonsFunctions = [
@@ -47,9 +47,8 @@ import 'package:flutter/material.dart';
 
   ],
     [//Row2
-
-      [Text("(" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "("],
-      [Text(")",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,")"],
+      [Text("10\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "*10^("],
+      [Text("|x|" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"abs("],
       [Text("x²" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "^(2)"],
       [Text("x\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"^("],
 
@@ -57,7 +56,7 @@ import 'package:flutter/material.dart';
     ],
     [//Row3
 
-      [Text("10\u02b8" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "*10^("],
+      [Text("ln2",style: TextStyle(color:Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "ln2"],
       [Text("Log\u2081\u2080" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"log("],
       [ Text("ln",  style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "ln("],
       [ Text("e\u02e3", style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"e^"],
@@ -68,15 +67,15 @@ import 'package:flutter/material.dart';
       [Text("sin" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) , "sin("],
       [Text("cos",style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "cos("],
       [Text("tan" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"tan("],
-      [Text("ln2",style: TextStyle(color:Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "ln2"],
+      [Text("acos" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "acos("],
 
     ],
     [//Row5
 
-      [Text("acos" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "acos("],
+
       [Text("asin",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"asin("],
       [Text("atan" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) ,"atan("],
-      [Text("|x|" ,style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFF363636) ,"abs("]
+
 
     ]
 
