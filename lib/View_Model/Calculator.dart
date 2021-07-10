@@ -20,7 +20,8 @@ class _CalculatorWidgetsState extends State<CalculatorWidgets> {
   num Result = 0.0;
    _onPressedButton(String _outputChar){
     TextSelection offsetSelection = f.selection;
-    List specialChar = ["ln(", "og(", "in(", "os(", "an(", "bs(", "sh(","nh("];
+    print(offsetSelection);
+    List<String> specialChar = [ "log(", "sin(", "cos(", "tan(", "abs(", "acos(","asin(","atan("];
 
     switch(_outputChar){
       case "init" : setState(() {
@@ -30,43 +31,39 @@ class _CalculatorWidgetsState extends State<CalculatorWidgets> {
                       f.text="";
                     f.selection = TextSelection(baseOffset: 0 , extentOffset: 0);});
                     break;
-      case "remove":  String temp;
+      case "remove":
                       setState(() {
                         Result = 0.0;
                         isShowCursor = true;
                         if (f.text.isNotEmpty) {
-                          if (f.text.length > 2) {
-                            temp = specialChar.firstWhere((element) =>
-                            element == f.text.substring(f.text.length - 3, f.text.length),
-                                orElse: () {
-                                  return null;
-                                }).toString();
-                          } else
-                            temp = "null";
-                          if (temp != "null") {
-                            if ([6, 7].contains(specialChar.indexOf(temp))) {
-                              f.text = f.text.substring(0, (f.text.length - 5));
-                              f.selection = TextSelection(
-                                  baseOffset: offsetSelection.baseOffset - 5,
-                                  extentOffset: offsetSelection.baseOffset - 5);
-                            } else if(specialChar.indexOf(temp) == 0){
-                              f.text = f.text.substring(0, (f.text.length - 3));
-                              f.selection = TextSelection(
-                                  baseOffset: offsetSelection.baseOffset - 3,
-                                  extentOffset: offsetSelection.baseOffset - 3);
-                            }
-                            else{
-                              f.text = f.text.substring(0, (f.text.length - 4));
-                              f.selection = TextSelection(
-                                  baseOffset: offsetSelection.baseOffset - 4,
-                                  extentOffset: offsetSelection.baseOffset - 4);
-                            }
-                          } else {
-                            f.text = f.text.substring(0, (f.text.length - 1));
+                          if((offsetSelection.baseOffset>1)&&(f.text.substring(offsetSelection.baseOffset-2,offsetSelection.baseOffset)=="!(")){
+                            f.text = f.text.replaceRange(offsetSelection.baseOffset-2, offsetSelection.baseOffset, ""); //f.text.substring(0, (f.text.length - 1));
+                            f.selection = TextSelection(
+                                baseOffset: offsetSelection.baseOffset - 2,
+                                extentOffset: offsetSelection.baseOffset - 2);
+                          }else if((offsetSelection.baseOffset>2)&&(f.text.substring(offsetSelection.baseOffset-3,offsetSelection.baseOffset)=="ln(")){
+                            f.text = f.text.replaceRange(offsetSelection.baseOffset-3, offsetSelection.baseOffset, ""); //f.text.substring(0, (f.text.length - 1));
+                            f.selection = TextSelection(
+                                baseOffset: offsetSelection.baseOffset - 3,
+                                extentOffset: offsetSelection.baseOffset - 3);
+                          }else if((offsetSelection.baseOffset>4)&&(["acos(","asin(","atan("].contains(f.text.substring(offsetSelection.baseOffset-5,offsetSelection.baseOffset)))){
+                            f.text =f.text.replaceRange(offsetSelection.baseOffset-5, offsetSelection.baseOffset, ""); //f.text.substring(0, (f.text.length - 5));
+                            f.selection = TextSelection(
+                                baseOffset: offsetSelection.baseOffset - 5,
+                                extentOffset: offsetSelection.baseOffset - 5);
+                          }
+                          else if((offsetSelection.baseOffset>3)&&(["log(", "sin(", "cos(", "tan(", "abs("].contains(f.text.substring(offsetSelection.baseOffset-4,offsetSelection.baseOffset)))){
+                            f.text = f.text.replaceRange(offsetSelection.baseOffset-4, offsetSelection.baseOffset, "");//f.text.substring(0, (f.text.length - 4));
+                            f.selection = TextSelection(
+                                baseOffset: offsetSelection.baseOffset - 4,
+                                extentOffset: offsetSelection.baseOffset - 4);
+                          }else{
+                            f.text = f.text.replaceRange(offsetSelection.baseOffset-1, offsetSelection.baseOffset, ""); //f.text.substring(0, (f.text.length - 1));
                             f.selection = TextSelection(
                                 baseOffset: offsetSelection.baseOffset - 1,
                                 extentOffset: offsetSelection.baseOffset - 1);
                           }
+
                         } else {
                           f.text = "";
                           f.selection = TextSelection(baseOffset: 0, extentOffset: 0);
@@ -362,6 +359,8 @@ Widget _bigPad(){
   TextEditingController f = TextEditingController();
   bool isShowCursor = true;
   TextSelection txtselct = new TextSelection(baseOffset: 0, extentOffset: 0);
+
+
   Widget _operationWidget(){
     return TextField(
 

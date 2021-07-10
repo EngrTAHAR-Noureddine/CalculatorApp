@@ -31,10 +31,10 @@ import 'package:flutter/material.dart';
 
 ],
 [ //Row5
-      [Text("+/-" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "*(-1)"],
-      [Text("0" ,style: TextStyle(color:  Color(0xFF707070))) ,Color(0xFFF4F4F4) , "0"],
-      [Text("." ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "."],
-      [Text("=",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFFFC8210) , "="],
+      [Text("0" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "0"],
+      [Text("." ,style: TextStyle(color:  Color(0xFF707070))) ,Color(0xFFF4F4F4) , "."],
+      [Text("=" ,style: TextStyle(color: Color(0xFFFFFFFF)))  ,Color(0xFF363636) , "="],
+      [Text("+",style: TextStyle(color: Color(0xFFFFFFFF))) ,Color(0xFFFC8210) , "+"],
 ]
   ];
   List rowButtonsFunctions = [
