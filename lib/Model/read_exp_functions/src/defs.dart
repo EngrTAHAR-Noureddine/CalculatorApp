@@ -13,10 +13,13 @@ final Map<String, String> _twoParameterFunctionLatexRepresentation = {
   'nrt': r'\sqrt[C1]{C2}',
   'pow': r'{C1}^{C2}'
 };
-//TODO matensach choufo idha int or not
+bool isInteger(num value) =>
+    value is int || value == value.roundToDouble();
 num factorial(num n) {
+  if(isInteger(n)){
   if (n < 0) throw ('Negative numbers are not allowed.');
   return n <= 1 ? 1 : n * factorial(n - 1);
+  }else throw ("Error");
 }
 
 /// A mapping of string representations to functions.

@@ -10,9 +10,6 @@ class MyApp extends StatelessWidget {
 
   Widget build(BuildContext context) {
 
-
-
-
     return MaterialApp(
       theme: ThemeData( /*Light */
         brightness: Brightness.light,
@@ -29,8 +26,6 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.blue,
         buttonColor: Colors.white ,
 
-
-        //accentColor: Colors.black,
 
         iconTheme: IconThemeData(color: Color(0xFF707070) ,),
         primaryIconTheme: IconThemeData(color: Color(0xFF707070)),
@@ -63,12 +58,9 @@ class MyApp extends StatelessWidget {
         tabBarTheme: TabBarTheme(labelColor: Color(0xFF707070),unselectedLabelColor: Colors.black ,
              ),
 
-        /* buttonTheme: Theme.of(context).buttonTheme.copyWith(
-            colorScheme:  ColorScheme.dark() ),  */
         appBarTheme: AppBarTheme(
           elevation: 0.0,
           backgroundColor: Colors.white,
-        //  iconTheme: IconThemeData(color: Colors.white),
 
         ),
 
@@ -89,20 +81,12 @@ class MyApp extends StatelessWidget {
 
         buttonColor: Color(0xFF121212) ,
 
-
-        //accentColor: Colors.black,
-
         iconTheme: IconThemeData(color: Color(0xFF707070) ,),
         primaryIconTheme: IconThemeData(color: Color(0xFF707070)),
 
 
         floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Color(0xFF121212),),
 
-
-       /* hintColor: Color(0xff280C0B) ,
-        highlightColor: Color(0xff372901) ,
-        hoverColor:  Color(0xff3A3A3B),
-*/
         focusColor: Colors.white,
         disabledColor: Colors.grey,
 
@@ -129,21 +113,13 @@ class MyApp extends StatelessWidget {
 
         ),
 
-        /* buttonTheme: Theme.of(context).buttonTheme.copyWith(
-            colorScheme:  ColorScheme.dark() ),  */
         appBarTheme: AppBarTheme(
           elevation: 0.0,
           backgroundColor:Color(0xFF121212),
           //  iconTheme: IconThemeData(color: Colors.white),
 
         ),
-/* //TODO
-* icon of history in light mode is note light
-* and remove char in expression raho yremovi men tali
-* 12345 ki ji tremovi 3 yremovi 5
-*
-*
-* */
+
 
       ),
       themeMode: ThemeMode.system,
